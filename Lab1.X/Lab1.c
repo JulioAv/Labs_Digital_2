@@ -19,8 +19,17 @@
 // CONFIG2
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF 
+#define _XTAL_FREQ 1000000
+#define __delay_us(x) _delay((unsigned long)((x)*(_XTAL_FREQ/4000000.0)))
 
 #include <xc.h>
+#include "adc.h"
+
+int val;
+int disp1, disp2, mult;
+char display[16] = {0B00111111, 0B00000110, 0B01011011, 0B01001111, 
+0B01100110, 0B01101101, 0B01111101, 0B00000111, 0B01111111, 0B01100111, 
+0B01110111, 0B01111100, 0B00111001, 0B01011110, 0B01111001, 0B01110001};
 
 void __interrupt()isr(void){
     if (RBIF){
@@ -31,16 +40,43 @@ void __interrupt()isr(void){
         else if(RB1 == 0){
             PORTD--;
         }
-        
+        RBIF = 0;
     }  
-    RBIF = 0;
+    if (ADIF){
+        if(ADCON0bits.CHS == 0){
+            val = ADRESH;
+            ADIF = 0;
+        }
+    }
+    if (T0IF){
+        switch (mult){
+            case 1:
+                PORTB = 0;
+                PORTC = 0;
+                RB3 = 1;
+                PORTC = display[disp1];
+                mult = 2;
+                break;
+            
+            case 2:
+                PORTB = 0;
+                PORTC = 0;
+                RB2 = 1;
+                PORTC = display[disp2];
+                mult = 1;
+                break;
+        }
+        TMR0 = 217;
+        T0IF = 0;
+    }
+    
 }
 
 void main(void) {
-    ANSEL = 0x00;
+    ANSEL = 0x01;
     ANSELH = 0x00;
     
-    TRISA = 0x00;
+    TRISA = 0x01;
     TRISB = 0x03;
     TRISC = 0x00;
     TRISD = 0x00;
@@ -55,13 +91,31 @@ void main(void) {
     OSCCONbits.SCS = 1;
     
     OPTION_REGbits.nRBPU = 0;
+    OPTION_REGbits.INTEDG = 1;
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.T0SE = 0;
+    OPTION_REGbits.PSA = 0;
+    OPTION_REGbits.PS = 0B110;
+    
+    TMR0 = 217;
     WPUB = 0x03;
     IOCB = 0x03;
     
+    ADC_CONFIG();
+    
     INTCONbits.GIE = 1;
     INTCONbits.RBIE = 1;
+    INTCONbits.PEIE = 1;
+    PIE1bits.ADIE = 1;
     
+    mult = 1;
     while(1){
+        disp1 = (val&0x0F);
+        disp2 = ((val&0xF0)>>4);
         
+        if(ADCON0bits.GO == 0){
+            __delay_us(50);
+            ADCON0bits.GO = 1;
+        }
     }
 }

@@ -1,4 +1,4 @@
-# 1 "Lab1.c"
+# 1 "ADC.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,28 +6,11 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Lab1.c" 2
+# 1 "ADC.c" 2
 
 
 
 
-
-
-
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = ON
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = ON
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
 
 
 
@@ -2512,105 +2495,20 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 25 "Lab1.c" 2
+# 9 "ADC.c" 2
 
 # 1 "./adc.h" 1
 # 35 "./adc.h"
 void ADC_CONFIG();
-# 26 "Lab1.c" 2
+# 10 "ADC.c" 2
 
 
-int val;
-int disp1, disp2, mult;
-char display[16] = {0B00111111, 0B00000110, 0B01011011, 0B01001111,
-0B01100110, 0B01101101, 0B01111101, 0B00000111, 0B01111111, 0B01100111,
-0B01110111, 0B01111100, 0B00111001, 0B01011110, 0B01111001, 0B01110001};
-
-void __attribute__((picinterrupt((""))))isr(void){
-    if (RBIF){
-
-        if(RB0 == 0){
-            PORTD++;
-        }
-        else if(RB1 == 0){
-            PORTD--;
-        }
-        RBIF = 0;
-    }
-    if (ADIF){
-        if(ADCON0bits.CHS == 0){
-            val = ADRESH;
-            ADIF = 0;
-        }
-    }
-    if (T0IF){
-        switch (mult){
-            case 1:
-                PORTB = 0;
-                PORTC = 0;
-                RB3 = 1;
-                PORTC = display[disp1];
-                mult = 2;
-                break;
-
-            case 2:
-                PORTB = 0;
-                PORTC = 0;
-                RB2 = 1;
-                PORTC = display[disp2];
-                mult = 1;
-                break;
-        }
-        TMR0 = 217;
-        T0IF = 0;
-    }
-
-}
-
-void main(void) {
-    ANSEL = 0x01;
-    ANSELH = 0x00;
-
-    TRISA = 0x01;
-    TRISB = 0x03;
-    TRISC = 0x00;
-    TRISD = 0x00;
-
-    PORTA = 0;
-    PORTB = 0;
-    PORTC = 0;
-    PORTD = 0;
-
-    OSCCONbits.IRCF = 0B100;
-    OSCCONbits.OSTS = 0;
-    OSCCONbits.SCS = 1;
-
-    OPTION_REGbits.nRBPU = 0;
-    OPTION_REGbits.INTEDG = 1;
-    OPTION_REGbits.T0CS = 0;
-    OPTION_REGbits.T0SE = 0;
-    OPTION_REGbits.PSA = 0;
-    OPTION_REGbits.PS = 0B110;
-
-    TMR0 = 217;
-    WPUB = 0x03;
-    IOCB = 0x03;
-
-    ADC_CONFIG();
-
-    INTCONbits.GIE = 1;
-    INTCONbits.RBIE = 1;
-    INTCONbits.PEIE = 1;
-    PIE1bits.ADIE = 1;
-
-    mult = 1;
-    while(1){
-        disp1 = (val&0x0F);
-        disp2 = ((val&0xF0)>>4);
-
-        if(ADCON0bits.GO == 0){
-            _delay((unsigned long)((50)*(1000000/4000000.0)));
-            ADCON0bits.GO = 1;
-        }
-    }
+void ADC_CONFIG(void){
+    ADCON0bits.ADCS = 0B00;
+    ADCON0bits.ADON = 1;
+    ADCON0bits.CHS = 0;
+    ADCON1bits.ADFM = 0;
+    ADCON1bits.VCFG0 = 0;
+    ADCON1bits.VCFG1 = 0;
+    ADCON0bits.GO = 0;
 }
