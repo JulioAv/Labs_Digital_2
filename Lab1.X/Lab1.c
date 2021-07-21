@@ -24,12 +24,10 @@
 
 #include <xc.h>
 #include "adc.h"
+#include "display.h"
 
 int val;
-int disp1, disp2, mult;
-char display[16] = {0B00111111, 0B00000110, 0B01011011, 0B01001111, 
-0B01100110, 0B01101101, 0B01111101, 0B00000111, 0B01111111, 0B01100111, 
-0B01110111, 0B01111100, 0B00111001, 0B01011110, 0B01111001, 0B01110001};
+int disp1, disp2, mult, valor;
 
 void __interrupt()isr(void){
     if (RBIF){
@@ -54,7 +52,7 @@ void __interrupt()isr(void){
                 PORTB = 0;
                 PORTC = 0;
                 RB3 = 1;
-                PORTC = display[disp1];
+                PORTC = DISP(disp1);
                 mult = 2;
                 break;
             
@@ -62,7 +60,7 @@ void __interrupt()isr(void){
                 PORTB = 0;
                 PORTC = 0;
                 RB2 = 1;
-                PORTC = display[disp2];
+                PORTC = DISP(disp2);
                 mult = 1;
                 break;
         }
@@ -113,9 +111,13 @@ void main(void) {
         disp1 = (val&0x0F);
         disp2 = ((val&0xF0)>>4);
         
-        if(ADCON0bits.GO == 0){
-            __delay_us(50);
-            ADCON0bits.GO = 1;
+        ADC_IF();
+        
+        if (PORTD == ADRESH){
+            PORTAbits.RA1 = 1;
+        }
+        else{
+            PORTAbits.RA1 = 0;
         }
     }
 }

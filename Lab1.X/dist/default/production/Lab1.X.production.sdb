@@ -3,8 +3,10 @@
 [d edition pro ]
 [d chip 16F887 ]
 [d frameptr 0 ]
-"12 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab1.X\ADC.c
+"14 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab1.X\ADC.c
 [v _ADC_CONFIG ADC_CONFIG `(v  1 e 1 0 ]
+"25
+[v _ADC_IF ADC_IF `(v  1 e 1 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8_16.c
@@ -13,21 +15,35 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"34 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab1.X\Lab1.c
+"16 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab1.X\DISPLAY.c
+[v _DISP DISP `(i  1 e 2 0 ]
+"32 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab1.X\Lab1.c
 [v _isr isr `II(v  1 e 1 0 ]
-"75
+"73
 [v _main main `(v  1 e 1 0 ]
 "59 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
 "166
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
+[s S204 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"183
+[u S213 . 1 `S204 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES213  1 e 1 @5 ]
 "228
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
 "352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
-[s S145 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S149 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -37,13 +53,13 @@
 `uc 1 GIE 1 0 :1:7 
 ]
 "482
-[s S154 . 1 `uc 1 . 1 0 :2:0 
+[s S158 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S159 . 1 `S145 1 . 1 0 `S154 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES159  1 e 1 @11 ]
+[u S163 . 1 `S149 1 . 1 0 `S158 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES163  1 e 1 @11 ]
 "1238
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
 [s S27 . 1 `uc 1 ADON 1 0 :1:0 
@@ -69,7 +85,7 @@
 ]
 [u S47 . 1 `S27 1 . 1 0 `S32 1 . 1 0 `S41 1 . 1 0 `S44 1 . 1 0 ]
 [v _ADCON0bits ADCON0bits `VES47  1 e 1 @31 ]
-[s S113 . 1 `uc 1 PS 1 0 :3:0 
+[s S117 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -77,12 +93,12 @@
 `uc 1 nRBPU 1 0 :1:7 
 ]
 "1366
-[s S120 . 1 `uc 1 PS0 1 0 :1:0 
+[s S124 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 ]
-[u S124 . 1 `S113 1 . 1 0 `S120 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES124  1 e 1 @129 ]
+[u S128 . 1 `S117 1 . 1 0 `S124 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES128  1 e 1 @129 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1478
@@ -91,7 +107,7 @@
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
-[s S177 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S181 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -100,35 +116,35 @@
 `uc 1 ADIE 1 0 :1:6 
 ]
 "1718
-[u S185 . 1 `S177 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES185  1 e 1 @140 ]
-[s S87 . 1 `uc 1 SCS 1 0 :1:0 
+[u S189 . 1 `S181 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES189  1 e 1 @140 ]
+[s S91 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 ]
 "1882
-[s S93 . 1 `uc 1 . 1 0 :4:0 
+[s S97 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S98 . 1 `S87 1 . 1 0 `S93 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES98  1 e 1 @143 ]
+[u S102 . 1 `S91 1 . 1 0 `S97 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES102  1 e 1 @143 ]
 "2346
 [v _WPUB WPUB `VEuc  1 e 1 @149 ]
 "2416
 [v _IOCB IOCB `VEuc  1 e 1 @150 ]
-[s S281 . 1 `uc 1 . 1 0 :4:0 
+[s S304 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "2991
-[u S287 . 1 `S281 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES287  1 e 1 @159 ]
+[u S310 . 1 `S304 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES310  1 e 1 @159 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
@@ -147,26 +163,37 @@
 [v _RBIF RBIF `VEb  1 e 0 @88 ]
 "4322
 [v _T0IF T0IF `VEb  1 e 0 @90 ]
-"28 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab1.X\Lab1.c
+"12 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab1.X\DISPLAY.c
+[v _display display `[16]uc  1 e 16 0 ]
+"29 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab1.X\Lab1.c
 [v _val val `i  1 e 2 0 ]
-"29
+"30
 [v _disp1 disp1 `i  1 e 2 0 ]
 [v _disp2 disp2 `i  1 e 2 0 ]
 [v _mult mult `i  1 e 2 0 ]
-"30
-[v _display display `[16]uc  1 e 16 0 ]
-"75
+"73
 [v _main main `(v  1 e 1 0 ]
 {
-"121
+"123
 } 0
-"12 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab1.X\ADC.c
+"25 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab1.X\ADC.c
+[v _ADC_IF ADC_IF `(v  1 e 1 0 ]
+{
+"31
+} 0
+"14
 [v _ADC_CONFIG ADC_CONFIG `(v  1 e 1 0 ]
 {
-"20
+"23
 } 0
-"34 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab1.X\Lab1.c
+"32 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab1.X\Lab1.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"73
+"71
+} 0
+"16 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab1.X\DISPLAY.c
+[v _DISP DISP `(i  1 e 2 0 ]
+{
+[v DISP@valor valor `i  1 p 2 0 ]
+"18
 } 0

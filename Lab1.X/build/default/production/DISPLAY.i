@@ -1,4 +1,4 @@
-# 1 "ADC.c"
+# 1 "DISPLAY.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,15 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ADC.c" 2
-# 11 "ADC.c"
+# 1 "DISPLAY.c" 2
+
+
+
+
+
+
+
+
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,30 +2495,18 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 11 "ADC.c" 2
+# 9 "DISPLAY.c" 2
 
-# 1 "./adc.h" 1
-# 35 "./adc.h"
-void ADC_IF();
-void ADC_CONFIG();
-# 12 "ADC.c" 2
+# 1 "./display.h" 1
+# 36 "./display.h"
+int DISP();
+# 10 "DISPLAY.c" 2
 
 
-void ADC_CONFIG(void){
-    ADCON0bits.ADCS = 0B00;
-    ADCON0bits.ADON = 1;
-    ADCON0bits.CHS = 0;
-    ADCON1bits.ADFM = 0;
-    ADCON1bits.VCFG0 = 0;
-    ADCON1bits.VCFG1 = 0;
-    ADCON0bits.GO = 0;
+char display[16] = {0B00111111, 0B00000110, 0B01011011, 0B01001111,
+0B01100110, 0B01101101, 0B01111101, 0B00000111, 0B01111111, 0B01100111,
+0B01110111, 0B01111100, 0B00111001, 0B01011110, 0B01111001, 0B01110001};
 
-}
-
-void ADC_IF(void){
-    if(ADCON0bits.GO == 0){
-            _delay((unsigned long)((50)*(1000000/4000000.0)));
-            ADCON0bits.GO = 1;
-        }
-
+int DISP(int valor) {
+    return display[valor];
 }

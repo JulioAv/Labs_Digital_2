@@ -4,6 +4,8 @@
  *
  * Created on 15 de julio de 2021, 03:34 PM
  */
+#define _XTAL_FREQ 1000000
+#define __delay_us(x) _delay((unsigned long)((x)*(_XTAL_FREQ/4000000.0)))
 
 
 #include <xc.h>
@@ -17,4 +19,13 @@ void ADC_CONFIG(void){
     ADCON1bits.VCFG0 = 0;
     ADCON1bits.VCFG1 = 0;
     ADCON0bits.GO = 0;
+    
+}
+
+void ADC_IF(void){
+    if(ADCON0bits.GO == 0){
+            __delay_us(50);
+            ADCON0bits.GO = 1;
+        }
+        
 }
