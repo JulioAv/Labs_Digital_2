@@ -32,7 +32,8 @@
 #define	ADC_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
-void ADC_CONFIG();
+void ADC_CONFIG(int frec);
+void ADC_IF(void);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

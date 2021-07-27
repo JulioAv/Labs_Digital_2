@@ -32,7 +32,7 @@
 #define	USART_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
-void USART_CONFIG();
+void USART_CONFIG(int frec, tr, rc);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 
