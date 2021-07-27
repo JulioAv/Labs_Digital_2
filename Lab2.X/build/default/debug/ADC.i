@@ -2493,7 +2493,7 @@ extern __bank0 __bit __timeout;
 # 1 "./adc.h" 1
 # 35 "./adc.h"
 void ADC_CONFIG(int frec);
-void ADC_IF();
+void ADC_IF(void);
 # 12 "ADC.c" 2
 
 

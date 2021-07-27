@@ -39,11 +39,14 @@
 #include "LCDh.h"
 #include "adc.h"
 #include "usart.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 
-int pot1, pot2, frec, tr, rc, con, vol1, vol2;
-char num[10] = {"0","1","2","3","4","5","6","7","8","9"};
-char cen1, dec1, uni1, cen2, dec2, uni2;
+char pot1, pot2, frec, tr, rc, con;
+char vol1, vol2;
+char buffer[20], buffer1[20];
+char cen, dec, uni;
 
 void UART_write(unsigned char* word){   //Función que transmite datos
     while (*word != 0){                 //Verifica que el puntero aumente
@@ -54,17 +57,42 @@ void UART_write(unsigned char* word){   //Función que transmite datos
     return;
 }
 
+int Num(int y){
+    char x;
+    switch(y){
+        case 0:
+            x = "0";
+        case 1:
+            x = "1";
+        case 2:
+            x = "2";
+        case 3:
+            x = "3";
+        case 4:
+            x = "4";
+        case 5:
+            x = "5";
+        case 6:
+            x = "6";
+        case 7:
+            x = "7";
+        case 8:
+            x = "8";
+        case 9:
+            x = "9";
+    }
+    return x;
+}
+
 void __interrupt()isr(void){
     if(ADIF){
         if (ADCON0bits.CHS == 0){
             pot1 = ADRESH;
-            vol1 = ((pot1/256)*5);
         }
         else{
             pot2 = ADRESH;
-            vol2 = ((pot2/256)*500);
         }
-        ADC_IF();
+        
         ADIF = 0;
     }
     if (RCIF){
@@ -103,25 +131,30 @@ void main(void) {
     ADCON0bits.GO = 1;
     Lcd_Init();
     RCIF = 0;
-    ADIF = 0;
+    
     INTCONbits.GIE = 1;
     Lcd_Clear();
+    Lcd_Set_Cursor(1,1);
+    Lcd_Write_String("S1:  S2:  S3:");
     
-    while(1){
-        cen1 = vol1/100;
-        dec1 = ((vol1%100)/10);
-        uni1 = ((vol1%100)%10);
+    while(1){       
+        ADC_IF();
+        PORTB = con;
+        vol1 = (pot1*0.01961);
+        vol2 = (pot2*0.01961);
+        sprintf(buffer, "%dV ", vol1);
+        sprintf(buffer1, "%dV ", vol2);
         
-        Lcd_Set_Cursor(1,1);
-        Lcd_Write_String("S1:  S2:  S3:");
-        Lcd_Set_Cursor(2,1);
-        Lcd_Write_String(num[cen1]);
+        cen = (con/100);
+        dec = ((con%100)/10);
+        uni = ((con%100)%10);
         
-        __delay_ms(5000);
-       
-        
-        //UART_write("Pot 1: \r \0");
-       // UART_write(pot1);
-        //__delay_ms(5000);
+        Lcd_Set_Cursor(2,2);
+        Lcd_Write_String(buffer);
+        Lcd_Write_String(buffer1);
+        Lcd_Set_Cursor(2,11);
+        Lcd_Write_Char(cen);
+        Lcd_Write_Char(dec);
+        Lcd_Write_Char(uni);
     }
 }

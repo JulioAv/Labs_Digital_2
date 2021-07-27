@@ -7,7 +7,7 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "LCDh.c" 2
-# 15 "LCDh.c"
+# 14 "LCDh.c"
 # 1 "./LCDh.h" 1
 # 66 "./LCDh.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
@@ -2515,12 +2515,12 @@ void Lcd_Write_String(char *a);
 void Lcd_Shift_Right(void);
 
 void Lcd_Shift_Left(void);
-# 15 "LCDh.c" 2
+# 14 "LCDh.c" 2
 
 
 void Lcd_Cmd(char a) {
     RC4 = 0;
-    PORTD = 4;
+    PORTD = a;
     RC5 = 1;
     _delay((unsigned long)((5)*(4000000/4000.0)));
     RC5 = 0;
@@ -2533,10 +2533,10 @@ void Lcd_Clear(void) {
 
 void Lcd_Set_Cursor(char a, char b) {
     if (a == 1){
-        PORTD = ((b & 0x0F)|0x80);
+        Lcd_Cmd((b & 0x0F)|0x80);
     }
  else if (a == 2){
-        PORTD = ((b & 0x0F)|0xC0);
+        Lcd_Cmd((b & 0x0F)|0xC0);
     }
 
 }
@@ -2550,10 +2550,13 @@ void Lcd_Init(void) {
     _delay((unsigned long)((11)*(4000000/4000.0)));
     Lcd_Cmd(0x30);
 
-    Lcd_Cmd(0x3C);
-    Lcd_Cmd(0x08);
+    Lcd_Cmd(0x38);
+    Lcd_Cmd(0x10);
     Lcd_Cmd(0x01);
     Lcd_Cmd(0x06);
+    Lcd_Cmd(0x10);
+    Lcd_Cmd(0x0C);
+    _delay((unsigned long)((100)*(4000000/4000.0)));
 
 }
 
