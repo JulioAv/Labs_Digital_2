@@ -416,12 +416,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _vol2 `i ~T0 @X0 1 e ]
 [v _x `i ~T0 @X0 1 e ]
 "48
-[; ;Lab2.c: 48: char buffer[10], buffer1[10], buffer2[10], buffer3[10], buffer4[10];
-[v _buffer `uc ~T0 @X0 -> 10 `i e ]
-[v _buffer1 `uc ~T0 @X0 -> 10 `i e ]
-[v _buffer2 `uc ~T0 @X0 -> 10 `i e ]
-[v _buffer3 `uc ~T0 @X0 -> 10 `i e ]
-[v _buffer4 `uc ~T0 @X0 -> 10 `i e ]
+[; ;Lab2.c: 48: char buffer[5];
+[v _buffer `uc ~T0 @X0 -> 5 `i e ]
 "49
 [; ;Lab2.c: 49: char cen, dec, uni;
 [v _cen `uc ~T0 @X0 1 e ]
@@ -653,108 +649,120 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Lab2.c: 120:     Lcd_Write_String("S1:  S2:  S3:");
 [e ( _Lcd_Write_String (1 :s 1C ]
 "121
-[; ;Lab2.c: 121:     UART_write("Presione * para mostrar los pot");
+[; ;Lab2.c: 121:     UART_write("Presione * para mostrar los pot ");
 [e ( _UART_write (1 :s 2C ]
-"123
-[; ;Lab2.c: 123:     while(1){
+"122
+[; ;Lab2.c: 122:     UART_write("O presione + - para el contador");
+[e ( _UART_write (1 :s 3C ]
+"124
+[; ;Lab2.c: 124:     while(1){
 [e :U 163 ]
 {
-"124
-[; ;Lab2.c: 124:         ADC_IF();
-[e ( _ADC_IF ..  ]
 "125
-[; ;Lab2.c: 125:         PORTB = con;
-[e = _PORTB -> _con `uc ]
+[; ;Lab2.c: 125:         ADC_IF();
+[e ( _ADC_IF ..  ]
 "126
-[; ;Lab2.c: 126:         vol1 = (pot1*0.01961);
-[e = _vol1 -> * -> -> _pot1 `i `d .0.01961 `i ]
+[; ;Lab2.c: 126:         PORTB = con;
+[e = _PORTB -> _con `uc ]
 "127
-[; ;Lab2.c: 127:         vol2 = (pot2*0.01961);
+[; ;Lab2.c: 127:         vol1 = (pot1*0.01961);
+[e = _vol1 -> * -> -> _pot1 `i `d .0.01961 `i ]
+"128
+[; ;Lab2.c: 128:         vol2 = (pot2*0.01961);
 [e = _vol2 -> * -> -> _pot2 `i `d .0.01961 `i ]
-"129
-[; ;Lab2.c: 129:         Division(con);
-[e ( _Division (1 _con ]
 "130
-[; ;Lab2.c: 130:         sprintf(buffer, "%dV  ", vol1);
-[e ( _sprintf (1 , (. , &U _buffer :s 3C _vol1 ]
+[; ;Lab2.c: 130:         Division(con);
+[e ( _Division (1 _con ]
 "131
-[; ;Lab2.c: 131:         sprintf(buffer1, " %dV ", vol2);
-[e ( _sprintf (1 , (. , &U _buffer1 :s 4C _vol2 ]
-"132
-[; ;Lab2.c: 132:         sprintf(buffer2, "  %d", cen);
-[e ( _sprintf (1 , (. , &U _buffer2 :s 5C -> _cen `i ]
-"133
-[; ;Lab2.c: 133:         sprintf(buffer3, "%d", dec);
-[e ( _sprintf (1 , (. , &U _buffer3 :s 6C -> _dec `i ]
-"134
-[; ;Lab2.c: 134:         sprintf(buffer4, "%d", uni);
-[e ( _sprintf (1 , (. , &U _buffer4 :s 7C -> _uni `i ]
-"137
-[; ;Lab2.c: 137:         Lcd_Set_Cursor(2,1);
+[; ;Lab2.c: 131:         Lcd_Set_Cursor(2,1);
 [e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"138
-[; ;Lab2.c: 138:         Lcd_Write_String(buffer);
+"132
+[; ;Lab2.c: 132:         sprintf(buffer, "%dV  ", vol1);
+[e ( _sprintf (1 , (. , &U _buffer :s 4C _vol1 ]
+"133
+[; ;Lab2.c: 133:         Lcd_Write_String(buffer);
 [e ( _Lcd_Write_String (1 &U _buffer ]
+"134
+[; ;Lab2.c: 134:         sprintf(buffer, " %dV ", vol2);
+[e ( _sprintf (1 , (. , &U _buffer :s 5C _vol2 ]
+"135
+[; ;Lab2.c: 135:         Lcd_Write_String(buffer);
+[e ( _Lcd_Write_String (1 &U _buffer ]
+"136
+[; ;Lab2.c: 136:         sprintf(buffer, "  %d", cen);
+[e ( _sprintf (1 , (. , &U _buffer :s 6C -> _cen `i ]
+"137
+[; ;Lab2.c: 137:         Lcd_Write_String(buffer);
+[e ( _Lcd_Write_String (1 &U _buffer ]
+"138
+[; ;Lab2.c: 138:         sprintf(buffer, "%d", dec);
+[e ( _sprintf (1 , (. , &U _buffer :s 7C -> _dec `i ]
 "139
-[; ;Lab2.c: 139:         Lcd_Write_String(buffer1);
-[e ( _Lcd_Write_String (1 &U _buffer1 ]
+[; ;Lab2.c: 139:         Lcd_Write_String(buffer);
+[e ( _Lcd_Write_String (1 &U _buffer ]
 "140
-[; ;Lab2.c: 140:         Lcd_Write_String(buffer2);
-[e ( _Lcd_Write_String (1 &U _buffer2 ]
+[; ;Lab2.c: 140:         sprintf(buffer, "%d", uni);
+[e ( _sprintf (1 , (. , &U _buffer :s 8C -> _uni `i ]
 "141
-[; ;Lab2.c: 141:         Lcd_Write_String(buffer3);
-[e ( _Lcd_Write_String (1 &U _buffer3 ]
-"142
-[; ;Lab2.c: 142:         Lcd_Write_String(buffer4);
-[e ( _Lcd_Write_String (1 &U _buffer4 ]
-"144
-[; ;Lab2.c: 144:         if (x == 1){
+[; ;Lab2.c: 141:         Lcd_Write_String(buffer);
+[e ( _Lcd_Write_String (1 &U _buffer ]
+"151
+[; ;Lab2.c: 151:         if (x == 1){
 [e $ ! == _x -> 1 `i 165  ]
 {
-"145
-[; ;Lab2.c: 145:             x = 0;
-[e = _x -> 0 `i ]
-"146
-[; ;Lab2.c: 146:             UART_write("\r \0");
-[e ( _UART_write (1 :s 8C ]
-"147
-[; ;Lab2.c: 147:             UART_write("Pot 1: ");
-[e ( _UART_write (1 :s 9C ]
-"148
-[; ;Lab2.c: 148:             UART_write(buffer);
-[e ( _UART_write (1 -> &U _buffer `*uc ]
-"149
-[; ;Lab2.c: 149:             UART_write(" Pot 2: ");
-[e ( _UART_write (1 :s 10C ]
-"150
-[; ;Lab2.c: 150:             UART_write(buffer1);
-[e ( _UART_write (1 -> &U _buffer1 `*uc ]
-"151
-[; ;Lab2.c: 151:             UART_write("\r \0");
-[e ( _UART_write (1 :s 11C ]
 "152
-[; ;Lab2.c: 152:         }
+[; ;Lab2.c: 152:             x = 0;
+[e = _x -> 0 `i ]
+"153
+[; ;Lab2.c: 153:             UART_write("\r \0");
+[e ( _UART_write (1 :s 9C ]
+"154
+[; ;Lab2.c: 154:             sprintf(buffer, "%dV  ", vol1);
+[e ( _sprintf (1 , (. , &U _buffer :s 10C _vol1 ]
+"155
+[; ;Lab2.c: 155:             UART_write("Pot 1: ");
+[e ( _UART_write (1 :s 11C ]
+"156
+[; ;Lab2.c: 156:             UART_write(buffer);
+[e ( _UART_write (1 -> &U _buffer `*uc ]
+"157
+[; ;Lab2.c: 157:             sprintf(buffer, "%dV  ", vol2);
+[e ( _sprintf (1 , (. , &U _buffer :s 12C _vol2 ]
+"158
+[; ;Lab2.c: 158:             UART_write(" Pot 2: ");
+[e ( _UART_write (1 :s 13C ]
+"159
+[; ;Lab2.c: 159:             UART_write(buffer);
+[e ( _UART_write (1 -> &U _buffer `*uc ]
+"160
+[; ;Lab2.c: 160:             UART_write("\r \0");
+[e ( _UART_write (1 :s 14C ]
+"161
+[; ;Lab2.c: 161:         }
 }
 [e :U 165 ]
-"153
-[; ;Lab2.c: 153:     }
+"162
+[; ;Lab2.c: 162:     }
 }
 [e :U 162 ]
 [e $U 163  ]
 [e :U 164 ]
-"154
-[; ;Lab2.c: 154: }
+"163
+[; ;Lab2.c: 163: }
 [e :UE 161 ]
 }
 [p f _sprintf 8388736 ]
-[a 2C 80 114 101 115 105 111 110 101 32 42 32 112 97 114 97 32 109 111 115 116 114 97 114 32 108 111 115 32 112 111 116 0 ]
-[a 5C 32 32 37 100 0 ]
-[a 6C 37 100 0 ]
+[a 3C 79 32 112 114 101 115 105 111 110 101 32 43 32 45 32 112 97 114 97 32 101 108 32 99 111 110 116 97 100 111 114 0 ]
+[a 6C 32 32 37 100 0 ]
 [a 7C 37 100 0 ]
+[a 8C 37 100 0 ]
 [a 1C 83 49 58 32 32 83 50 58 32 32 83 51 58 0 ]
-[a 4C 32 37 100 86 32 0 ]
-[a 10C 32 80 111 116 32 50 58 32 0 ]
-[a 9C 80 111 116 32 49 58 32 0 ]
-[a 3C 37 100 86 32 32 0 ]
-[a 8C 13 32 0 0 ]
-[a 11C 13 32 0 0 ]
+[a 2C 80 114 101 115 105 111 110 101 32 42 32 112 97 114 97 32 109 111 115 116 114 97 114 32 108 111 115 32 112 111 116 32 0 ]
+[a 5C 32 37 100 86 32 0 ]
+[a 13C 32 80 111 116 32 50 58 32 0 ]
+[a 11C 80 111 116 32 49 58 32 0 ]
+[a 4C 37 100 86 32 32 0 ]
+[a 10C 37 100 86 32 32 0 ]
+[a 12C 37 100 86 32 32 0 ]
+[a 9C 13 32 0 0 ]
+[a 14C 13 32 0 0 ]

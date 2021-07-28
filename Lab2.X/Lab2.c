@@ -45,7 +45,7 @@
 
 char pot1, pot2, frec, tr, rc, con;
 int vol1, vol2, x;
-char buffer[10], buffer1[10], buffer2[10], buffer3[10], buffer4[10];
+char buffer[5];
 char cen, dec, uni;
 
 void UART_write(unsigned char* word){   //Función que transmite datos
@@ -118,7 +118,8 @@ void main(void) {
     Lcd_Clear();
     Lcd_Set_Cursor(1,1);
     Lcd_Write_String("S1:  S2:  S3:");
-    UART_write("Presione * para mostrar los pot");
+    UART_write("Presione * para mostrar los pot ");
+    UART_write("O presione + - para el contador");
     
     while(1){       
         ADC_IF();
@@ -127,27 +128,35 @@ void main(void) {
         vol2 = (pot2*0.01961);
         
         Division(con);
-        sprintf(buffer, "%dV  ", vol1);
-        sprintf(buffer1, " %dV ", vol2);
-        sprintf(buffer2, "  %d", cen);
-        sprintf(buffer3, "%d", dec);
-        sprintf(buffer4, "%d", uni);
-        
-        
         Lcd_Set_Cursor(2,1);
+        sprintf(buffer, "%dV  ", vol1);
         Lcd_Write_String(buffer);
-        Lcd_Write_String(buffer1);
-        Lcd_Write_String(buffer2);
-        Lcd_Write_String(buffer3);
-        Lcd_Write_String(buffer4);
+        sprintf(buffer, " %dV ", vol2);
+        Lcd_Write_String(buffer);
+        sprintf(buffer, "  %d", cen);
+        Lcd_Write_String(buffer);
+        sprintf(buffer, "%d", dec);
+        Lcd_Write_String(buffer);
+        sprintf(buffer, "%d", uni);
+        Lcd_Write_String(buffer);
+        
+        
+        //Lcd_Set_Cursor(2,1);
+        //Lcd_Write_String(buffer);
+        //Lcd_Write_String(buffer1);
+        //Lcd_Write_String(buffer2);
+        //Lcd_Write_String(buffer3);
+        //Lcd_Write_String(buffer4);
         
         if (x == 1){
             x = 0;
             UART_write("\r \0");
+            sprintf(buffer, "%dV  ", vol1);
             UART_write("Pot 1: ");
             UART_write(buffer);
+            sprintf(buffer, "%dV  ", vol2);
             UART_write(" Pot 2: ");
-            UART_write(buffer1);
+            UART_write(buffer);
             UART_write("\r \0");
         }
     }
