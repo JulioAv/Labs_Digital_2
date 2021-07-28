@@ -144,9 +144,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
 "194 C:\Program Files\Microchip\xc8\v2.31\pic\include\c90\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
-"83 ./LCDh.h
-[; ;./LCDh.h: 83: void Lcd_Write_Char(char a);
-[v _Lcd_Write_Char `(v ~T0 @X0 0 ef1`uc ]
 "8 Lab2.c
 [p x FOSC  =  INTRC_NOCLKOUT ]
 "9
@@ -414,13 +411,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _rc `uc ~T0 @X0 1 e ]
 [v _con `uc ~T0 @X0 1 e ]
 "47
-[; ;Lab2.c: 47: char vol1, vol2;
-[v _vol1 `uc ~T0 @X0 1 e ]
-[v _vol2 `uc ~T0 @X0 1 e ]
+[; ;Lab2.c: 47: int vol1, vol2, x;
+[v _vol1 `i ~T0 @X0 1 e ]
+[v _vol2 `i ~T0 @X0 1 e ]
+[v _x `i ~T0 @X0 1 e ]
 "48
-[; ;Lab2.c: 48: char buffer[20], buffer1[20];
-[v _buffer `uc ~T0 @X0 -> 20 `i e ]
-[v _buffer1 `uc ~T0 @X0 -> 20 `i e ]
+[; ;Lab2.c: 48: char buffer[10], buffer1[10], buffer2[10], buffer3[10], buffer4[10];
+[v _buffer `uc ~T0 @X0 -> 10 `i e ]
+[v _buffer1 `uc ~T0 @X0 -> 10 `i e ]
+[v _buffer2 `uc ~T0 @X0 -> 10 `i e ]
+[v _buffer3 `uc ~T0 @X0 -> 10 `i e ]
+[v _buffer4 `uc ~T0 @X0 -> 10 `i e ]
 "49
 [; ;Lab2.c: 49: char cen, dec, uni;
 [v _cen `uc ~T0 @X0 1 e ]
@@ -467,329 +468,293 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 143 ]
 }
 "60
-[; ;Lab2.c: 60: int Num(int y){
-[v _Num `(i ~T0 @X0 1 ef1`i ]
+[; ;Lab2.c: 60: void Division(char y){
+[v _Division `(v ~T0 @X0 1 ef1`uc ]
 {
-[e :U _Num ]
-[v _y `i ~T0 @X0 1 r1 ]
+[e :U _Division ]
+[v _y `uc ~T0 @X0 1 r1 ]
 [f ]
 "61
-[; ;Lab2.c: 61:     char x;
-[v _x `uc ~T0 @X0 1 a ]
+[; ;Lab2.c: 61:         cen = (y/100);
+[e = _cen -> / -> _y `i -> 100 `i `uc ]
 "62
-[; ;Lab2.c: 62:     switch(y){
-[e $U 152  ]
-{
+[; ;Lab2.c: 62:         dec = ((y%100)/10);
+[e = _dec -> / % -> _y `i -> 100 `i -> 10 `i `uc ]
 "63
-[; ;Lab2.c: 63:         case 0:
-[e :U 153 ]
+[; ;Lab2.c: 63:         uni = ((y%100)%10);
+[e = _uni -> % % -> _y `i -> 100 `i -> 10 `i `uc ]
 "64
-[; ;Lab2.c: 64:             x = "0";
-[e = _x -> :s 1C `uc ]
-"65
-[; ;Lab2.c: 65:         case 1:
-[e :U 154 ]
-"66
-[; ;Lab2.c: 66:             x = "1";
-[e = _x -> :s 2C `uc ]
-"67
-[; ;Lab2.c: 67:         case 2:
-[e :U 155 ]
-"68
-[; ;Lab2.c: 68:             x = "2";
-[e = _x -> :s 3C `uc ]
-"69
-[; ;Lab2.c: 69:         case 3:
-[e :U 156 ]
-"70
-[; ;Lab2.c: 70:             x = "3";
-[e = _x -> :s 4C `uc ]
-"71
-[; ;Lab2.c: 71:         case 4:
-[e :U 157 ]
-"72
-[; ;Lab2.c: 72:             x = "4";
-[e = _x -> :s 5C `uc ]
-"73
-[; ;Lab2.c: 73:         case 5:
-[e :U 158 ]
-"74
-[; ;Lab2.c: 74:             x = "5";
-[e = _x -> :s 6C `uc ]
-"75
-[; ;Lab2.c: 75:         case 6:
-[e :U 159 ]
-"76
-[; ;Lab2.c: 76:             x = "6";
-[e = _x -> :s 7C `uc ]
-"77
-[; ;Lab2.c: 77:         case 7:
-[e :U 160 ]
-"78
-[; ;Lab2.c: 78:             x = "7";
-[e = _x -> :s 8C `uc ]
-"79
-[; ;Lab2.c: 79:         case 8:
-[e :U 161 ]
-"80
-[; ;Lab2.c: 80:             x = "8";
-[e = _x -> :s 9C `uc ]
-"81
-[; ;Lab2.c: 81:         case 9:
-[e :U 162 ]
-"82
-[; ;Lab2.c: 82:             x = "9";
-[e = _x -> :s 10C `uc ]
-"83
-[; ;Lab2.c: 83:     }
-}
-[e $U 151  ]
-[e :U 152 ]
-[e [\ _y , $ -> 0 `i 153
- , $ -> 1 `i 154
- , $ -> 2 `i 155
- , $ -> 3 `i 156
- , $ -> 4 `i 157
- , $ -> 5 `i 158
- , $ -> 6 `i 159
- , $ -> 7 `i 160
- , $ -> 8 `i 161
- , $ -> 9 `i 162
- 151 ]
-[e :U 151 ]
-"84
-[; ;Lab2.c: 84:     return x;
-[e ) -> _x `i ]
-[e $UE 150  ]
-"85
-[; ;Lab2.c: 85: }
+[; ;Lab2.c: 64: }
 [e :UE 150 ]
 }
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"87
-[; ;Lab2.c: 87: void __attribute__((picinterrupt((""))))isr(void){
+"66
+[; ;Lab2.c: 66: void __attribute__((picinterrupt((""))))isr(void){
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
-"88
-[; ;Lab2.c: 88:     if(ADIF){
-[e $ ! _ADIF 164  ]
+"67
+[; ;Lab2.c: 67:     if(ADIF){
+[e $ ! _ADIF 152  ]
 {
-"89
-[; ;Lab2.c: 89:         if (ADCON0bits.CHS == 0){
-[e $ ! == -> . . _ADCON0bits 0 2 `i -> 0 `i 165  ]
+"68
+[; ;Lab2.c: 68:         if (ADCON0bits.CHS == 0){
+[e $ ! == -> . . _ADCON0bits 0 2 `i -> 0 `i 153  ]
 {
-"90
-[; ;Lab2.c: 90:             pot1 = ADRESH;
+"69
+[; ;Lab2.c: 69:             pot1 = ADRESH;
 [e = _pot1 -> _ADRESH `uc ]
-"91
-[; ;Lab2.c: 91:         }
+"70
+[; ;Lab2.c: 70:         }
 }
-[e $U 166  ]
-"92
-[; ;Lab2.c: 92:         else{
-[e :U 165 ]
+[e $U 154  ]
+"71
+[; ;Lab2.c: 71:         else{
+[e :U 153 ]
 {
-"93
-[; ;Lab2.c: 93:             pot2 = ADRESH;
+"72
+[; ;Lab2.c: 72:             pot2 = ADRESH;
 [e = _pot2 -> _ADRESH `uc ]
-"94
-[; ;Lab2.c: 94:         }
+"73
+[; ;Lab2.c: 73:         }
 }
-[e :U 166 ]
-"96
-[; ;Lab2.c: 96:         ADIF = 0;
+[e :U 154 ]
+"75
+[; ;Lab2.c: 75:         ADIF = 0;
 [e = _ADIF -> -> 0 `i `b ]
-"97
-[; ;Lab2.c: 97:     }
+"76
+[; ;Lab2.c: 76:     }
 }
-[e :U 164 ]
-"98
-[; ;Lab2.c: 98:     if (RCIF){
-[e $ ! _RCIF 167  ]
+[e :U 152 ]
+"77
+[; ;Lab2.c: 77:     if (RCIF){
+[e $ ! _RCIF 155  ]
 {
-"99
-[; ;Lab2.c: 99:         if (RCREG == '+'){
-[e $ ! == -> _RCREG `ui -> 43 `ui 168  ]
+"78
+[; ;Lab2.c: 78:         if (RCREG == '+'){
+[e $ ! == -> _RCREG `ui -> 43 `ui 156  ]
 {
-"100
-[; ;Lab2.c: 100:             con++;
+"79
+[; ;Lab2.c: 79:             con++;
 [e ++ _con -> -> 1 `i `uc ]
-"101
-[; ;Lab2.c: 101:         }
+"80
+[; ;Lab2.c: 80:         }
 }
-[e $U 169  ]
-"102
-[; ;Lab2.c: 102:         else if (RCREG == '-'){
-[e :U 168 ]
-[e $ ! == -> _RCREG `ui -> 45 `ui 170  ]
+[e $U 157  ]
+"81
+[; ;Lab2.c: 81:         else if (RCREG == '-'){
+[e :U 156 ]
+[e $ ! == -> _RCREG `ui -> 45 `ui 158  ]
 {
-"103
-[; ;Lab2.c: 103:             con--;
+"82
+[; ;Lab2.c: 82:             con--;
 [e -- _con -> -> 1 `i `uc ]
-"104
-[; ;Lab2.c: 104:         }
+"83
+[; ;Lab2.c: 83:         }
 }
-[e :U 170 ]
-[e :U 169 ]
-"106
-[; ;Lab2.c: 106:         RCIF = 0;
+[e $U 159  ]
+"84
+[; ;Lab2.c: 84:         else if (RCREG == '*'){
+[e :U 158 ]
+[e $ ! == -> _RCREG `ui -> 42 `ui 160  ]
+{
+"85
+[; ;Lab2.c: 85:             x = 1;
+[e = _x -> 1 `i ]
+"86
+[; ;Lab2.c: 86:         }
+}
+[e :U 160 ]
+[e :U 159 ]
+[e :U 157 ]
+"87
+[; ;Lab2.c: 87:         RCIF = 0;
 [e = _RCIF -> -> 0 `i `b ]
-"107
-[; ;Lab2.c: 107:     }
+"88
+[; ;Lab2.c: 88:     }
 }
-[e :U 167 ]
-"108
-[; ;Lab2.c: 108:     return;
-[e $UE 163  ]
-"109
-[; ;Lab2.c: 109: }
-[e :UE 163 ]
+[e :U 155 ]
+"90
+[; ;Lab2.c: 90:     return;
+[e $UE 151  ]
+"91
+[; ;Lab2.c: 91: }
+[e :UE 151 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"111
-[; ;Lab2.c: 111: void main(void) {
+"93
+[; ;Lab2.c: 93: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"112
-[; ;Lab2.c: 112:     ANSEL = 0x03;
+"94
+[; ;Lab2.c: 94:     ANSEL = 0x03;
 [e = _ANSEL -> -> 3 `i `uc ]
-"113
-[; ;Lab2.c: 113:     ANSELH = 0x00;
+"95
+[; ;Lab2.c: 95:     ANSELH = 0x00;
 [e = _ANSELH -> -> 0 `i `uc ]
-"115
-[; ;Lab2.c: 115:     TRISA = 0x03;
+"97
+[; ;Lab2.c: 97:     TRISA = 0x03;
 [e = _TRISA -> -> 3 `i `uc ]
-"116
-[; ;Lab2.c: 116:     TRISB = 0x00;
+"98
+[; ;Lab2.c: 98:     TRISB = 0x00;
 [e = _TRISB -> -> 0 `i `uc ]
-"117
-[; ;Lab2.c: 117:     TRISC = 0x80;
+"99
+[; ;Lab2.c: 99:     TRISC = 0x80;
 [e = _TRISC -> -> 128 `i `uc ]
-"118
-[; ;Lab2.c: 118:     TRISD = 0x00;
+"100
+[; ;Lab2.c: 100:     TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"120
-[; ;Lab2.c: 120:     OSCCONbits.IRCF = 0B110;
+"102
+[; ;Lab2.c: 102:     OSCCONbits.IRCF = 0B110;
 [e = . . _OSCCONbits 0 4 -> -> 6 `i `uc ]
-"121
-[; ;Lab2.c: 121:     OSCCONbits.OSTS = 0;
+"103
+[; ;Lab2.c: 103:     OSCCONbits.OSTS = 0;
 [e = . . _OSCCONbits 0 3 -> -> 0 `i `uc ]
-"122
-[; ;Lab2.c: 122:     OSCCONbits.SCS = 1;
+"104
+[; ;Lab2.c: 104:     OSCCONbits.SCS = 1;
 [e = . . _OSCCONbits 0 0 -> -> 1 `i `uc ]
-"124
-[; ;Lab2.c: 124:     ADC_CONFIG(4);
+"106
+[; ;Lab2.c: 106:     ADC_CONFIG(4);
 [e ( _ADC_CONFIG (1 -> 4 `i ]
-"125
-[; ;Lab2.c: 125:     USART_CONFIG(4, 1, 1);
+"107
+[; ;Lab2.c: 107:     USART_CONFIG(4, 1, 1);
 [e ( _USART_CONFIG (3 , , -> 4 `i -> 1 `i -> 1 `i ]
-"127
-[; ;Lab2.c: 127:     INTCONbits.PEIE = 1;
+"109
+[; ;Lab2.c: 109:     INTCONbits.PEIE = 1;
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-"128
-[; ;Lab2.c: 128:     PIE1bits.ADIE = 1;
+"110
+[; ;Lab2.c: 110:     PIE1bits.ADIE = 1;
 [e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
-"130
-[; ;Lab2.c: 130:     PIE1bits.RCIE = 1;
+"112
+[; ;Lab2.c: 112:     PIE1bits.RCIE = 1;
 [e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
-"131
-[; ;Lab2.c: 131:     ADCON0bits.GO = 1;
+"113
+[; ;Lab2.c: 113:     ADCON0bits.GO = 1;
 [e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
-"132
-[; ;Lab2.c: 132:     Lcd_Init();
+"114
+[; ;Lab2.c: 114:     Lcd_Init();
 [e ( _Lcd_Init ..  ]
-"133
-[; ;Lab2.c: 133:     RCIF = 0;
+"115
+[; ;Lab2.c: 115:     RCIF = 0;
 [e = _RCIF -> -> 0 `i `b ]
-"135
-[; ;Lab2.c: 135:     INTCONbits.GIE = 1;
+"117
+[; ;Lab2.c: 117:     INTCONbits.GIE = 1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"136
-[; ;Lab2.c: 136:     Lcd_Clear();
+"118
+[; ;Lab2.c: 118:     Lcd_Clear();
 [e ( _Lcd_Clear ..  ]
-"137
-[; ;Lab2.c: 137:     Lcd_Set_Cursor(1,1);
+"119
+[; ;Lab2.c: 119:     Lcd_Set_Cursor(1,1);
 [e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"138
-[; ;Lab2.c: 138:     Lcd_Write_String("S1:  S2:  S3:");
-[e ( _Lcd_Write_String (1 :s 11C ]
-"140
-[; ;Lab2.c: 140:     while(1){
-[e :U 173 ]
+"120
+[; ;Lab2.c: 120:     Lcd_Write_String("S1:  S2:  S3:");
+[e ( _Lcd_Write_String (1 :s 1C ]
+"121
+[; ;Lab2.c: 121:     UART_write("Presione * para mostrar los pot");
+[e ( _UART_write (1 :s 2C ]
+"123
+[; ;Lab2.c: 123:     while(1){
+[e :U 163 ]
 {
-"141
-[; ;Lab2.c: 141:         ADC_IF();
+"124
+[; ;Lab2.c: 124:         ADC_IF();
 [e ( _ADC_IF ..  ]
-"142
-[; ;Lab2.c: 142:         PORTB = con;
+"125
+[; ;Lab2.c: 125:         PORTB = con;
 [e = _PORTB -> _con `uc ]
-"143
-[; ;Lab2.c: 143:         vol1 = (pot1*0.01961);
-[e = _vol1 -> * -> -> _pot1 `i `d .0.01961 `uc ]
-"144
-[; ;Lab2.c: 144:         vol2 = (pot2*0.01961);
-[e = _vol2 -> * -> -> _pot2 `i `d .0.01961 `uc ]
-"145
-[; ;Lab2.c: 145:         sprintf(buffer, "%dV ", vol1);
-[e ( _sprintf (1 , (. , &U _buffer :s 12C -> _vol1 `i ]
-"146
-[; ;Lab2.c: 146:         sprintf(buffer1, "%dV ", vol2);
-[e ( _sprintf (1 , (. , &U _buffer1 :s 13C -> _vol2 `i ]
-"148
-[; ;Lab2.c: 148:         cen = (con/100);
-[e = _cen -> / -> _con `i -> 100 `i `uc ]
-"149
-[; ;Lab2.c: 149:         dec = ((con%100)/10);
-[e = _dec -> / % -> _con `i -> 100 `i -> 10 `i `uc ]
-"150
-[; ;Lab2.c: 150:         uni = ((con%100)%10);
-[e = _uni -> % % -> _con `i -> 100 `i -> 10 `i `uc ]
-"152
-[; ;Lab2.c: 152:         Lcd_Set_Cursor(2,2);
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 2 `i `uc ]
-"153
-[; ;Lab2.c: 153:         Lcd_Write_String(buffer);
+"126
+[; ;Lab2.c: 126:         vol1 = (pot1*0.01961);
+[e = _vol1 -> * -> -> _pot1 `i `d .0.01961 `i ]
+"127
+[; ;Lab2.c: 127:         vol2 = (pot2*0.01961);
+[e = _vol2 -> * -> -> _pot2 `i `d .0.01961 `i ]
+"129
+[; ;Lab2.c: 129:         Division(con);
+[e ( _Division (1 _con ]
+"130
+[; ;Lab2.c: 130:         sprintf(buffer, "%dV  ", vol1);
+[e ( _sprintf (1 , (. , &U _buffer :s 3C _vol1 ]
+"131
+[; ;Lab2.c: 131:         sprintf(buffer1, " %dV ", vol2);
+[e ( _sprintf (1 , (. , &U _buffer1 :s 4C _vol2 ]
+"132
+[; ;Lab2.c: 132:         sprintf(buffer2, "  %d", cen);
+[e ( _sprintf (1 , (. , &U _buffer2 :s 5C -> _cen `i ]
+"133
+[; ;Lab2.c: 133:         sprintf(buffer3, "%d", dec);
+[e ( _sprintf (1 , (. , &U _buffer3 :s 6C -> _dec `i ]
+"134
+[; ;Lab2.c: 134:         sprintf(buffer4, "%d", uni);
+[e ( _sprintf (1 , (. , &U _buffer4 :s 7C -> _uni `i ]
+"137
+[; ;Lab2.c: 137:         Lcd_Set_Cursor(2,1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"138
+[; ;Lab2.c: 138:         Lcd_Write_String(buffer);
 [e ( _Lcd_Write_String (1 &U _buffer ]
-"154
-[; ;Lab2.c: 154:         Lcd_Write_String(buffer1);
+"139
+[; ;Lab2.c: 139:         Lcd_Write_String(buffer1);
 [e ( _Lcd_Write_String (1 &U _buffer1 ]
-"155
-[; ;Lab2.c: 155:         Lcd_Set_Cursor(2,11);
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 11 `i `uc ]
-"156
-[; ;Lab2.c: 156:         Lcd_Write_Char(cen);
-[e ( _Lcd_Write_Char (1 _cen ]
-"157
-[; ;Lab2.c: 157:         Lcd_Write_Char(dec);
-[e ( _Lcd_Write_Char (1 _dec ]
-"158
-[; ;Lab2.c: 158:         Lcd_Write_Char(uni);
-[e ( _Lcd_Write_Char (1 _uni ]
-"159
-[; ;Lab2.c: 159:     }
+"140
+[; ;Lab2.c: 140:         Lcd_Write_String(buffer2);
+[e ( _Lcd_Write_String (1 &U _buffer2 ]
+"141
+[; ;Lab2.c: 141:         Lcd_Write_String(buffer3);
+[e ( _Lcd_Write_String (1 &U _buffer3 ]
+"142
+[; ;Lab2.c: 142:         Lcd_Write_String(buffer4);
+[e ( _Lcd_Write_String (1 &U _buffer4 ]
+"144
+[; ;Lab2.c: 144:         if (x == 1){
+[e $ ! == _x -> 1 `i 165  ]
+{
+"145
+[; ;Lab2.c: 145:             x = 0;
+[e = _x -> 0 `i ]
+"146
+[; ;Lab2.c: 146:             UART_write("\r \0");
+[e ( _UART_write (1 :s 8C ]
+"147
+[; ;Lab2.c: 147:             UART_write("Pot 1: ");
+[e ( _UART_write (1 :s 9C ]
+"148
+[; ;Lab2.c: 148:             UART_write(buffer);
+[e ( _UART_write (1 -> &U _buffer `*uc ]
+"149
+[; ;Lab2.c: 149:             UART_write(" Pot 2: ");
+[e ( _UART_write (1 :s 10C ]
+"150
+[; ;Lab2.c: 150:             UART_write(buffer1);
+[e ( _UART_write (1 -> &U _buffer1 `*uc ]
+"151
+[; ;Lab2.c: 151:             UART_write("\r \0");
+[e ( _UART_write (1 :s 11C ]
+"152
+[; ;Lab2.c: 152:         }
 }
-[e :U 172 ]
-[e $U 173  ]
-[e :U 174 ]
-"160
-[; ;Lab2.c: 160: }
-[e :UE 171 ]
+[e :U 165 ]
+"153
+[; ;Lab2.c: 153:     }
+}
+[e :U 162 ]
+[e $U 163  ]
+[e :U 164 ]
+"154
+[; ;Lab2.c: 154: }
+[e :UE 161 ]
 }
 [p f _sprintf 8388736 ]
-[a 11C 83 49 58 32 32 83 50 58 32 32 83 51 58 0 ]
-[a 10C 57 0 ]
-[a 9C 56 0 ]
-[a 8C 55 0 ]
-[a 7C 54 0 ]
-[a 6C 53 0 ]
-[a 5C 52 0 ]
-[a 4C 51 0 ]
-[a 3C 50 0 ]
-[a 2C 49 0 ]
-[a 1C 48 0 ]
-[a 12C 37 100 86 32 0 ]
-[a 13C 37 100 86 32 0 ]
+[a 2C 80 114 101 115 105 111 110 101 32 42 32 112 97 114 97 32 109 111 115 116 114 97 114 32 108 111 115 32 112 111 116 0 ]
+[a 5C 32 32 37 100 0 ]
+[a 6C 37 100 0 ]
+[a 7C 37 100 0 ]
+[a 1C 83 49 58 32 32 83 50 58 32 32 83 51 58 0 ]
+[a 4C 32 37 100 86 32 0 ]
+[a 10C 32 80 111 116 32 50 58 32 0 ]
+[a 9C 80 111 116 32 49 58 32 0 ]
+[a 3C 37 100 86 32 32 0 ]
+[a 8C 13 32 0 0 ]
+[a 11C 13 32 0 0 ]

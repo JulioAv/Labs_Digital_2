@@ -2867,8 +2867,8 @@ extern char * ftoa(float f, int * status);
 
 
 char pot1, pot2, frec, tr, rc, con;
-char vol1, vol2;
-char buffer[20], buffer1[20];
+int vol1, vol2, x;
+char buffer[10], buffer1[10], buffer2[10], buffer3[10], buffer4[10];
 char cen, dec, uni;
 
 void UART_write(unsigned char* word){
@@ -2880,31 +2880,10 @@ void UART_write(unsigned char* word){
     return;
 }
 
-int Num(int y){
-    char x;
-    switch(y){
-        case 0:
-            x = "0";
-        case 1:
-            x = "1";
-        case 2:
-            x = "2";
-        case 3:
-            x = "3";
-        case 4:
-            x = "4";
-        case 5:
-            x = "5";
-        case 6:
-            x = "6";
-        case 7:
-            x = "7";
-        case 8:
-            x = "8";
-        case 9:
-            x = "9";
-    }
-    return x;
+void Division(char y){
+        cen = (y/100);
+        dec = ((y%100)/10);
+        uni = ((y%100)%10);
 }
 
 void __attribute__((picinterrupt((""))))isr(void){
@@ -2925,9 +2904,12 @@ void __attribute__((picinterrupt((""))))isr(void){
         else if (RCREG == '-'){
             con--;
         }
-
+        else if (RCREG == '*'){
+            x = 1;
+        }
         RCIF = 0;
     }
+
     return;
 }
 
@@ -2959,25 +2941,37 @@ void main(void) {
     Lcd_Clear();
     Lcd_Set_Cursor(1,1);
     Lcd_Write_String("S1:  S2:  S3:");
+    UART_write("Presione * para mostrar los pot");
 
     while(1){
         ADC_IF();
         PORTB = con;
         vol1 = (pot1*0.01961);
         vol2 = (pot2*0.01961);
-        sprintf(buffer, "%dV ", vol1);
-        sprintf(buffer1, "%dV ", vol2);
 
-        cen = (con/100);
-        dec = ((con%100)/10);
-        uni = ((con%100)%10);
+        Division(con);
+        sprintf(buffer, "%dV  ", vol1);
+        sprintf(buffer1, " %dV ", vol2);
+        sprintf(buffer2, "  %d", cen);
+        sprintf(buffer3, "%d", dec);
+        sprintf(buffer4, "%d", uni);
 
-        Lcd_Set_Cursor(2,2);
+
+        Lcd_Set_Cursor(2,1);
         Lcd_Write_String(buffer);
         Lcd_Write_String(buffer1);
-        Lcd_Set_Cursor(2,11);
-        Lcd_Write_Char(cen);
-        Lcd_Write_Char(dec);
-        Lcd_Write_Char(uni);
+        Lcd_Write_String(buffer2);
+        Lcd_Write_String(buffer3);
+        Lcd_Write_String(buffer4);
+
+        if (x == 1){
+            x = 0;
+            UART_write("\r \0");
+            UART_write("Pot 1: ");
+            UART_write(buffer);
+            UART_write(" Pot 2: ");
+            UART_write(buffer1);
+            UART_write("\r \0");
+        }
     }
 }
