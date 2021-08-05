@@ -1,0 +1,15 @@
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\bin\Debug\netcoreapp3.1\Interfaz.exe
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\bin\Debug\netcoreapp3.1\Interfaz.deps.json
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\bin\Debug\netcoreapp3.1\Interfaz.runtimeconfig.json
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\bin\Debug\netcoreapp3.1\Interfaz.runtimeconfig.dev.json
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\bin\Debug\netcoreapp3.1\Interfaz.dll
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\bin\Debug\netcoreapp3.1\Interfaz.pdb
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\obj\Debug\netcoreapp3.1\Interfaz.csproj.AssemblyReference.cache
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\obj\Debug\netcoreapp3.1\Interfaz.Interfaz.resources
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\obj\Debug\netcoreapp3.1\Interfaz.csproj.GenerateResource.cache
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\obj\Debug\netcoreapp3.1\Interfaz.AssemblyInfoInputs.cache
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\obj\Debug\netcoreapp3.1\Interfaz.AssemblyInfo.cs
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\obj\Debug\netcoreapp3.1\Interfaz.csproj.CoreCompileInputs.cache
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\obj\Debug\netcoreapp3.1\Interfaz.dll
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\obj\Debug\netcoreapp3.1\Interfaz.pdb
+C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab3\Interfaz\obj\Debug\netcoreapp3.1\Interfaz.genruntimeconfig.cache

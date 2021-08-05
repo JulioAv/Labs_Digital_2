@@ -636,9 +636,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "115
 [; ;Lab2.c: 115:     RCIF = 0;
 [e = _RCIF -> -> 0 `i `b ]
-"117
-[; ;Lab2.c: 117:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
 "118
 [; ;Lab2.c: 118:     Lcd_Clear();
 [e ( _Lcd_Clear ..  ]
@@ -654,101 +651,104 @@ Version 4.0 HI-TECH Software Intermediate Code
 "122
 [; ;Lab2.c: 122:     UART_write("O presione + - para el contador");
 [e ( _UART_write (1 :s 3C ]
-"124
-[; ;Lab2.c: 124:     while(1){
+"123
+[; ;Lab2.c: 123:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+"125
+[; ;Lab2.c: 125:     while(1){
 [e :U 163 ]
 {
-"125
-[; ;Lab2.c: 125:         ADC_IF();
-[e ( _ADC_IF ..  ]
 "126
-[; ;Lab2.c: 126:         PORTB = con;
-[e = _PORTB -> _con `uc ]
+[; ;Lab2.c: 126:         ADC_IF();
+[e ( _ADC_IF ..  ]
 "127
-[; ;Lab2.c: 127:         vol1 = (pot1*0.01961);
-[e = _vol1 -> * -> -> _pot1 `i `d .0.01961 `i ]
+[; ;Lab2.c: 127:         PORTB = con;
+[e = _PORTB -> _con `uc ]
 "128
-[; ;Lab2.c: 128:         vol2 = (pot2*0.01961);
+[; ;Lab2.c: 128:         vol1 = (pot1*0.01961);
+[e = _vol1 -> * -> -> _pot1 `i `d .0.01961 `i ]
+"129
+[; ;Lab2.c: 129:         vol2 = (pot2*0.01961);
 [e = _vol2 -> * -> -> _pot2 `i `d .0.01961 `i ]
-"130
-[; ;Lab2.c: 130:         Division(con);
-[e ( _Division (1 _con ]
 "131
-[; ;Lab2.c: 131:         Lcd_Set_Cursor(2,1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+[; ;Lab2.c: 131:         Division(con);
+[e ( _Division (1 _con ]
 "132
-[; ;Lab2.c: 132:         sprintf(buffer, "%dV  ", vol1);
-[e ( _sprintf (1 , (. , &U _buffer :s 4C _vol1 ]
+[; ;Lab2.c: 132:         Lcd_Set_Cursor(2,1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
 "133
-[; ;Lab2.c: 133:         Lcd_Write_String(buffer);
-[e ( _Lcd_Write_String (1 &U _buffer ]
+[; ;Lab2.c: 133:         sprintf(buffer, "%dV  ", vol1);
+[e ( _sprintf (1 , (. , &U _buffer :s 4C _vol1 ]
 "134
-[; ;Lab2.c: 134:         sprintf(buffer, " %dV ", vol2);
-[e ( _sprintf (1 , (. , &U _buffer :s 5C _vol2 ]
+[; ;Lab2.c: 134:         Lcd_Write_String(buffer);
+[e ( _Lcd_Write_String (1 &U _buffer ]
 "135
-[; ;Lab2.c: 135:         Lcd_Write_String(buffer);
-[e ( _Lcd_Write_String (1 &U _buffer ]
+[; ;Lab2.c: 135:         sprintf(buffer, " %dV ", vol2);
+[e ( _sprintf (1 , (. , &U _buffer :s 5C _vol2 ]
 "136
-[; ;Lab2.c: 136:         sprintf(buffer, "  %d", cen);
-[e ( _sprintf (1 , (. , &U _buffer :s 6C -> _cen `i ]
+[; ;Lab2.c: 136:         Lcd_Write_String(buffer);
+[e ( _Lcd_Write_String (1 &U _buffer ]
 "137
-[; ;Lab2.c: 137:         Lcd_Write_String(buffer);
-[e ( _Lcd_Write_String (1 &U _buffer ]
+[; ;Lab2.c: 137:         sprintf(buffer, "  %d", cen);
+[e ( _sprintf (1 , (. , &U _buffer :s 6C -> _cen `i ]
 "138
-[; ;Lab2.c: 138:         sprintf(buffer, "%d", dec);
-[e ( _sprintf (1 , (. , &U _buffer :s 7C -> _dec `i ]
+[; ;Lab2.c: 138:         Lcd_Write_String(buffer);
+[e ( _Lcd_Write_String (1 &U _buffer ]
 "139
-[; ;Lab2.c: 139:         Lcd_Write_String(buffer);
-[e ( _Lcd_Write_String (1 &U _buffer ]
+[; ;Lab2.c: 139:         sprintf(buffer, "%d", dec);
+[e ( _sprintf (1 , (. , &U _buffer :s 7C -> _dec `i ]
 "140
-[; ;Lab2.c: 140:         sprintf(buffer, "%d", uni);
-[e ( _sprintf (1 , (. , &U _buffer :s 8C -> _uni `i ]
-"141
-[; ;Lab2.c: 141:         Lcd_Write_String(buffer);
+[; ;Lab2.c: 140:         Lcd_Write_String(buffer);
 [e ( _Lcd_Write_String (1 &U _buffer ]
-"151
-[; ;Lab2.c: 151:         if (x == 1){
+"141
+[; ;Lab2.c: 141:         sprintf(buffer, "%d", uni);
+[e ( _sprintf (1 , (. , &U _buffer :s 8C -> _uni `i ]
+"142
+[; ;Lab2.c: 142:         Lcd_Write_String(buffer);
+[e ( _Lcd_Write_String (1 &U _buffer ]
+"153
+[; ;Lab2.c: 153:         if (x == 1){
 [e $ ! == _x -> 1 `i 165  ]
 {
-"152
-[; ;Lab2.c: 152:             x = 0;
-[e = _x -> 0 `i ]
-"153
-[; ;Lab2.c: 153:             UART_write("\r \0");
-[e ( _UART_write (1 :s 9C ]
 "154
-[; ;Lab2.c: 154:             sprintf(buffer, "%dV  ", vol1);
-[e ( _sprintf (1 , (. , &U _buffer :s 10C _vol1 ]
+[; ;Lab2.c: 154:             x = 0;
+[e = _x -> 0 `i ]
 "155
-[; ;Lab2.c: 155:             UART_write("Pot 1: ");
-[e ( _UART_write (1 :s 11C ]
+[; ;Lab2.c: 155:             UART_write("\r \0");
+[e ( _UART_write (1 :s 9C ]
 "156
-[; ;Lab2.c: 156:             UART_write(buffer);
-[e ( _UART_write (1 -> &U _buffer `*uc ]
+[; ;Lab2.c: 156:             sprintf(buffer, "%dV  ", vol1);
+[e ( _sprintf (1 , (. , &U _buffer :s 10C _vol1 ]
 "157
-[; ;Lab2.c: 157:             sprintf(buffer, "%dV  ", vol2);
-[e ( _sprintf (1 , (. , &U _buffer :s 12C _vol2 ]
+[; ;Lab2.c: 157:             UART_write("Pot 1: ");
+[e ( _UART_write (1 :s 11C ]
 "158
-[; ;Lab2.c: 158:             UART_write(" Pot 2: ");
-[e ( _UART_write (1 :s 13C ]
-"159
-[; ;Lab2.c: 159:             UART_write(buffer);
+[; ;Lab2.c: 158:             UART_write(buffer);
 [e ( _UART_write (1 -> &U _buffer `*uc ]
+"159
+[; ;Lab2.c: 159:             sprintf(buffer, "%dV  ", vol2);
+[e ( _sprintf (1 , (. , &U _buffer :s 12C _vol2 ]
 "160
-[; ;Lab2.c: 160:             UART_write("\r \0");
-[e ( _UART_write (1 :s 14C ]
+[; ;Lab2.c: 160:             UART_write(" Pot 2: ");
+[e ( _UART_write (1 :s 13C ]
 "161
-[; ;Lab2.c: 161:         }
+[; ;Lab2.c: 161:             UART_write(buffer);
+[e ( _UART_write (1 -> &U _buffer `*uc ]
+"162
+[; ;Lab2.c: 162:             UART_write("\r \0");
+[e ( _UART_write (1 :s 14C ]
+"163
+[; ;Lab2.c: 163:         }
 }
 [e :U 165 ]
-"162
-[; ;Lab2.c: 162:     }
+"164
+[; ;Lab2.c: 164:     }
 }
 [e :U 162 ]
 [e $U 163  ]
 [e :U 164 ]
-"163
-[; ;Lab2.c: 163: }
+"165
+[; ;Lab2.c: 165: }
 [e :UE 161 ]
 }
 [p f _sprintf 8388736 ]

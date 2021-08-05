@@ -114,12 +114,13 @@ void main(void) {
     Lcd_Init();
     RCIF = 0;
     
-    INTCONbits.GIE = 1;
+    
     Lcd_Clear();
     Lcd_Set_Cursor(1,1);
     Lcd_Write_String("S1:  S2:  S3:");
     UART_write("Presione * para mostrar los pot ");
     UART_write("O presione + - para el contador");
+    INTCONbits.GIE = 1;
     
     while(1){       
         ADC_IF();
@@ -140,6 +141,7 @@ void main(void) {
         sprintf(buffer, "%d", uni);
         Lcd_Write_String(buffer);
         
+       
         
         //Lcd_Set_Cursor(2,1);
         //Lcd_Write_String(buffer);

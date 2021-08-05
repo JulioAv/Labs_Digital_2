@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
-                                                                                               Wed Jul 28 15:24:44 2021
+                                                                                               Wed Jul 28 16:21:13 2021
 
 Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
      1                           	processor	16F887
@@ -1229,57 +1229,57 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1215  03BE  128C               	bcf	12,5	;volatile
   1216  03BF                     l2604:
   1217                           
-  1218                           ;Lab2.c: 117:     INTCONbits.GIE = 1;
-  1219  03BF  178B               	bsf	11,7	;volatile
-  1220  03C0                     l2606:
+  1218                           ;Lab2.c: 118:     Lcd_Clear();
+  1219  03BF  120A  158A  241F  120A  118A  	fcall	_Lcd_Clear
+  1220  03C4                     l2606:
   1221                           
-  1222                           ;Lab2.c: 118:     Lcd_Clear();
-  1223  03C0  120A  158A  241F  120A  118A  	fcall	_Lcd_Clear
-  1224  03C5                     l2608:
-  1225                           
-  1226                           ;Lab2.c: 119:     Lcd_Set_Cursor(1,1);
-  1227  03C5  01F6               	clrf	Lcd_Set_Cursor@b
-  1228  03C6  0AF6               	incf	Lcd_Set_Cursor@b,f
-  1229  03C7  3001               	movlw	1
-  1230  03C8  120A  158A  244E  120A  118A  	fcall	_Lcd_Set_Cursor
-  1231  03CD                     l2610:
-  1232                           
-  1233                           ;Lab2.c: 120:     Lcd_Write_String("S1:  S2:  S3:");
-  1234  03CD  304C               	movlw	(low ((STR_1-__stringbase)| (0+32768)))& (0+255)
-  1235  03CE  00F5               	movwf	Lcd_Write_String@a
-  1236  03CF  3080               	movlw	128
-  1237  03D0  00F6               	movwf	Lcd_Write_String@a+1
-  1238  03D1  120A  158A  25CC  120A  118A  	fcall	_Lcd_Write_String
-  1239  03D6                     l2612:
-  1240                           
-  1241                           ;Lab2.c: 121:     UART_write("Presione * para mostrar los pot ");
-  1242  03D6  300B               	movlw	(low ((STR_2-__stringbase)| (0+32768)))& (0+255)
-  1243  03D7  00F3               	movwf	UART_write@word
-  1244  03D8  3080               	movlw	128
-  1245  03D9  00F4               	movwf	UART_write@word+1
-  1246  03DA  120A  158A  248B  120A  118A  	fcall	_UART_write
-  1247  03DF                     l2614:
-  1248                           
-  1249                           ;Lab2.c: 122:     UART_write("O presione + - para el contador");
-  1250  03DF  302C               	movlw	(low ((STR_3-__stringbase)| (0+32768)))& (0+255)
-  1251  03E0  00F3               	movwf	UART_write@word
-  1252  03E1  3080               	movlw	128
-  1253  03E2  00F4               	movwf	UART_write@word+1
-  1254  03E3  120A  158A  248B  120A  118A  	fcall	_UART_write
+  1222                           ;Lab2.c: 119:     Lcd_Set_Cursor(1,1);
+  1223  03C4  01F6               	clrf	Lcd_Set_Cursor@b
+  1224  03C5  0AF6               	incf	Lcd_Set_Cursor@b,f
+  1225  03C6  3001               	movlw	1
+  1226  03C7  120A  158A  244E  120A  118A  	fcall	_Lcd_Set_Cursor
+  1227  03CC                     l2608:
+  1228                           
+  1229                           ;Lab2.c: 120:     Lcd_Write_String("S1:  S2:  S3:");
+  1230  03CC  304C               	movlw	(low ((STR_1-__stringbase)| (0+32768)))& (0+255)
+  1231  03CD  00F5               	movwf	Lcd_Write_String@a
+  1232  03CE  3080               	movlw	128
+  1233  03CF  00F6               	movwf	Lcd_Write_String@a+1
+  1234  03D0  120A  158A  25CC  120A  118A  	fcall	_Lcd_Write_String
+  1235  03D5                     l2610:
+  1236                           
+  1237                           ;Lab2.c: 121:     UART_write("Presione * para mostrar los pot ");
+  1238  03D5  300B               	movlw	(low ((STR_2-__stringbase)| (0+32768)))& (0+255)
+  1239  03D6  00F3               	movwf	UART_write@word
+  1240  03D7  3080               	movlw	128
+  1241  03D8  00F4               	movwf	UART_write@word+1
+  1242  03D9  120A  158A  248B  120A  118A  	fcall	_UART_write
+  1243  03DE                     l2612:
+  1244                           
+  1245                           ;Lab2.c: 122:     UART_write("O presione + - para el contador");
+  1246  03DE  302C               	movlw	(low ((STR_3-__stringbase)| (0+32768)))& (0+255)
+  1247  03DF  00F3               	movwf	UART_write@word
+  1248  03E0  3080               	movlw	128
+  1249  03E1  00F4               	movwf	UART_write@word+1
+  1250  03E2  120A  158A  248B  120A  118A  	fcall	_UART_write
+  1251  03E7                     l2614:
+  1252                           
+  1253                           ;Lab2.c: 123:     INTCONbits.GIE = 1;
+  1254  03E7  178B               	bsf	11,7	;volatile
   1255  03E8                     l2616:
   1256                           
-  1257                           ;Lab2.c: 125:         ADC_IF();
+  1257                           ;Lab2.c: 126:         ADC_IF();
   1258  03E8  120A  158A  246C  120A  118A  	fcall	_ADC_IF
   1259  03ED                     l2618:
   1260                           
-  1261                           ;Lab2.c: 126:         PORTB = con;
+  1261                           ;Lab2.c: 127:         PORTB = con;
   1262  03ED  1283               	bcf	3,5	;RP0=0, select bank0
   1263  03EE  1303               	bcf	3,6	;RP1=0, select bank0
   1264  03EF  085C               	movf	_con,w
   1265  03F0  0086               	movwf	6	;volatile
   1266  03F1                     l2620:
   1267                           
-  1268                           ;Lab2.c: 127:         vol1 = (pot1*0.01961);
+  1268                           ;Lab2.c: 128:         vol1 = (pot1*0.01961);
   1269  03F1  085E               	movf	_pot1,w
   1270  03F2  00CF               	movwf	??_main
   1271  03F3  01D0               	clrf	??_main+1
@@ -1333,7 +1333,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1319  042F  00D7               	movwf	_vol1
   1320  0430                     l2622:
   1321                           
-  1322                           ;Lab2.c: 128:         vol2 = (pot2*0.01961);
+  1322                           ;Lab2.c: 129:         vol2 = (pot2*0.01961);
   1323  0430  085D               	movf	_pot2,w
   1324  0431  00CF               	movwf	??_main
   1325  0432  01D0               	clrf	??_main+1
@@ -1387,19 +1387,19 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1373  046E  00D5               	movwf	_vol2
   1374  046F                     l2624:
   1375                           
-  1376                           ;Lab2.c: 130:         Division(con);
+  1376                           ;Lab2.c: 131:         Division(con);
   1377  046F  085C               	movf	_con,w
   1378  0470  120A  158A  26B3  120A  118A  	fcall	_Division
   1379  0475                     l2626:
   1380                           
-  1381                           ;Lab2.c: 131:         Lcd_Set_Cursor(2,1);
+  1381                           ;Lab2.c: 132:         Lcd_Set_Cursor(2,1);
   1382  0475  01F6               	clrf	Lcd_Set_Cursor@b
   1383  0476  0AF6               	incf	Lcd_Set_Cursor@b,f
   1384  0477  3002               	movlw	2
   1385  0478  120A  158A  244E  120A  118A  	fcall	_Lcd_Set_Cursor
   1386  047D                     l2628:
   1387                           
-  1388                           ;Lab2.c: 132:         sprintf(buffer, "%dV  ", vol1);
+  1388                           ;Lab2.c: 133:         sprintf(buffer, "%dV  ", vol1);
   1389  047D  306B               	movlw	(low ((STR_4-__stringbase)| (0+32768)))& (0+255)
   1390  047E  1283               	bcf	3,5	;RP0=0, select bank0
   1391  047F  1303               	bcf	3,6	;RP1=0, select bank0
@@ -1414,7 +1414,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1400  0488  120A  118A  2567  120A  118A  	fcall	_sprintf
   1401  048D                     l2630:
   1402                           
-  1403                           ;Lab2.c: 133:         Lcd_Write_String(buffer);
+  1403                           ;Lab2.c: 134:         Lcd_Write_String(buffer);
   1404  048D  305F               	movlw	(low (_buffer| 0))& (0+255)
   1405  048E  00F5               	movwf	Lcd_Write_String@a
   1406  048F  3000               	movlw	0
@@ -1422,7 +1422,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1408  0491  120A  158A  25CC  120A  118A  	fcall	_Lcd_Write_String
   1409  0496                     l2632:
   1410                           
-  1411                           ;Lab2.c: 134:         sprintf(buffer, " %dV ", vol2);
+  1411                           ;Lab2.c: 135:         sprintf(buffer, " %dV ", vol2);
   1412  0496  3071               	movlw	(low ((STR_5-__stringbase)| (0+32768)))& (0+255)
   1413  0497  1283               	bcf	3,5	;RP0=0, select bank0
   1414  0498  1303               	bcf	3,6	;RP1=0, select bank0
@@ -1437,7 +1437,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1423  04A1  120A  118A  2567  120A  118A  	fcall	_sprintf
   1424  04A6                     l2634:
   1425                           
-  1426                           ;Lab2.c: 135:         Lcd_Write_String(buffer);
+  1426                           ;Lab2.c: 136:         Lcd_Write_String(buffer);
   1427  04A6  305F               	movlw	(low (_buffer| 0))& (0+255)
   1428  04A7  00F5               	movwf	Lcd_Write_String@a
   1429  04A8  3000               	movlw	0
@@ -1445,7 +1445,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1431  04AA  120A  158A  25CC  120A  118A  	fcall	_Lcd_Write_String
   1432  04AF                     l2636:
   1433                           
-  1434                           ;Lab2.c: 136:         sprintf(buffer, "  %d", cen);
+  1434                           ;Lab2.c: 137:         sprintf(buffer, "  %d", cen);
   1435  04AF  3077               	movlw	(low ((STR_6-__stringbase)| (0+32768)))& (0+255)
   1436  04B0  1283               	bcf	3,5	;RP0=0, select bank0
   1437  04B1  1303               	bcf	3,6	;RP1=0, select bank0
@@ -1463,7 +1463,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1449  04BD  120A  118A  2567  120A  118A  	fcall	_sprintf
   1450  04C2                     l2638:
   1451                           
-  1452                           ;Lab2.c: 137:         Lcd_Write_String(buffer);
+  1452                           ;Lab2.c: 138:         Lcd_Write_String(buffer);
   1453  04C2  305F               	movlw	(low (_buffer| 0))& (0+255)
   1454  04C3  00F5               	movwf	Lcd_Write_String@a
   1455  04C4  3000               	movlw	0
@@ -1471,7 +1471,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1457  04C6  120A  158A  25CC  120A  118A  	fcall	_Lcd_Write_String
   1458  04CB                     l2640:
   1459                           
-  1460                           ;Lab2.c: 138:         sprintf(buffer, "%d", dec);
+  1460                           ;Lab2.c: 139:         sprintf(buffer, "%d", dec);
   1461  04CB  3079               	movlw	(low (((STR_6+2)-__stringbase)| (0+32768)))& (0+255)
   1462  04CC  1283               	bcf	3,5	;RP0=0, select bank0
   1463  04CD  1303               	bcf	3,6	;RP1=0, select bank0
@@ -1489,7 +1489,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1475  04D9  120A  118A  2567  120A  118A  	fcall	_sprintf
   1476  04DE                     l2642:
   1477                           
-  1478                           ;Lab2.c: 139:         Lcd_Write_String(buffer);
+  1478                           ;Lab2.c: 140:         Lcd_Write_String(buffer);
   1479  04DE  305F               	movlw	(low (_buffer| 0))& (0+255)
   1480  04DF  00F5               	movwf	Lcd_Write_String@a
   1481  04E0  3000               	movlw	0
@@ -1497,7 +1497,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1483  04E2  120A  158A  25CC  120A  118A  	fcall	_Lcd_Write_String
   1484  04E7                     l2644:
   1485                           
-  1486                           ;Lab2.c: 140:         sprintf(buffer, "%d", uni);
+  1486                           ;Lab2.c: 141:         sprintf(buffer, "%d", uni);
   1487  04E7  3079               	movlw	(low (((STR_6+2)-__stringbase)| (0+32768)))& (0+255)
   1488  04E8  1283               	bcf	3,5	;RP0=0, select bank0
   1489  04E9  1303               	bcf	3,6	;RP1=0, select bank0
@@ -1515,7 +1515,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1501  04F5  120A  118A  2567  120A  118A  	fcall	_sprintf
   1502  04FA                     l2646:
   1503                           
-  1504                           ;Lab2.c: 141:         Lcd_Write_String(buffer);
+  1504                           ;Lab2.c: 142:         Lcd_Write_String(buffer);
   1505  04FA  305F               	movlw	(low (_buffer| 0))& (0+255)
   1506  04FB  00F5               	movwf	Lcd_Write_String@a
   1507  04FC  3000               	movlw	0
@@ -1523,7 +1523,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1509  04FE  120A  158A  25CC  120A  118A  	fcall	_Lcd_Write_String
   1510  0503                     l2648:
   1511                           
-  1512                           ;Lab2.c: 151:         if (x == 1){
+  1512                           ;Lab2.c: 153:         if (x == 1){
   1513  0503  1283               	bcf	3,5	;RP0=0, select bank0
   1514  0504  1303               	bcf	3,6	;RP1=0, select bank0
   1515  0505  0353               	decf	_x,w
@@ -1536,12 +1536,12 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1522  050B                     u2950:
   1523  050B                     l2650:
   1524                           
-  1525                           ;Lab2.c: 152:             x = 0;
+  1525                           ;Lab2.c: 154:             x = 0;
   1526  050B  01D3               	clrf	_x
   1527  050C  01D4               	clrf	_x+1
   1528  050D                     l2652:
   1529                           
-  1530                           ;Lab2.c: 153:             UART_write("\r \0");
+  1530                           ;Lab2.c: 155:             UART_write("\r \0");
   1531  050D  307C               	movlw	(low ((STR_9-__stringbase)| (0+32768)))& (0+255)
   1532  050E  00F3               	movwf	UART_write@word
   1533  050F  3080               	movlw	128
@@ -1549,7 +1549,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1535  0511  120A  158A  248B  120A  118A  	fcall	_UART_write
   1536  0516                     l2654:
   1537                           
-  1538                           ;Lab2.c: 154:             sprintf(buffer, "%dV  ", vol1);
+  1538                           ;Lab2.c: 156:             sprintf(buffer, "%dV  ", vol1);
   1539  0516  306B               	movlw	(low ((STR_4-__stringbase)| (0+32768)))& (0+255)
   1540  0517  1283               	bcf	3,5	;RP0=0, select bank0
   1541  0518  1303               	bcf	3,6	;RP1=0, select bank0
@@ -1564,7 +1564,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1550  0521  120A  118A  2567  120A  118A  	fcall	_sprintf
   1551  0526                     l2656:
   1552                           
-  1553                           ;Lab2.c: 155:             UART_write("Pot 1: ");
+  1553                           ;Lab2.c: 157:             UART_write("Pot 1: ");
   1554  0526  3063               	movlw	(low ((STR_11-__stringbase)| (0+32768)))& (0+255)
   1555  0527  00F3               	movwf	UART_write@word
   1556  0528  3080               	movlw	128
@@ -1572,7 +1572,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1558  052A  120A  158A  248B  120A  118A  	fcall	_UART_write
   1559  052F                     l2658:
   1560                           
-  1561                           ;Lab2.c: 156:             UART_write(buffer);
+  1561                           ;Lab2.c: 158:             UART_write(buffer);
   1562  052F  305F               	movlw	(low (_buffer| 0))& (0+255)
   1563  0530  00F3               	movwf	UART_write@word
   1564  0531  3000               	movlw	0
@@ -1580,7 +1580,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1566  0533  120A  158A  248B  120A  118A  	fcall	_UART_write
   1567  0538                     l2660:
   1568                           
-  1569                           ;Lab2.c: 157:             sprintf(buffer, "%dV  ", vol2);
+  1569                           ;Lab2.c: 159:             sprintf(buffer, "%dV  ", vol2);
   1570  0538  306B               	movlw	(low ((STR_4-__stringbase)| (0+32768)))& (0+255)
   1571  0539  1283               	bcf	3,5	;RP0=0, select bank0
   1572  053A  1303               	bcf	3,6	;RP1=0, select bank0
@@ -1595,7 +1595,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1581  0543  120A  118A  2567  120A  118A  	fcall	_sprintf
   1582  0548                     l2662:
   1583                           
-  1584                           ;Lab2.c: 158:             UART_write(" Pot 2: ");
+  1584                           ;Lab2.c: 160:             UART_write(" Pot 2: ");
   1585  0548  305A               	movlw	(low ((STR_13-__stringbase)| (0+32768)))& (0+255)
   1586  0549  00F3               	movwf	UART_write@word
   1587  054A  3080               	movlw	128
@@ -1603,7 +1603,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1589  054C  120A  158A  248B  120A  118A  	fcall	_UART_write
   1590  0551                     l2664:
   1591                           
-  1592                           ;Lab2.c: 159:             UART_write(buffer);
+  1592                           ;Lab2.c: 161:             UART_write(buffer);
   1593  0551  305F               	movlw	(low (_buffer| 0))& (0+255)
   1594  0552  00F3               	movwf	UART_write@word
   1595  0553  3000               	movlw	0
@@ -1611,7 +1611,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1597  0555  120A  158A  248B  120A  118A  	fcall	_UART_write
   1598  055A                     l2666:
   1599                           
-  1600                           ;Lab2.c: 160:             UART_write("\r \0");
+  1600                           ;Lab2.c: 162:             UART_write("\r \0");
   1601  055A  307C               	movlw	(low ((STR_9-__stringbase)| (0+32768)))& (0+255)
   1602  055B  00F3               	movwf	UART_write@word
   1603  055C  3080               	movlw	128
@@ -5917,7 +5917,7 @@ DATA                 0      0      4F      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.31 build 20201012212115 
-Symbol Table                                                                                   Wed Jul 28 15:24:44 2021
+Symbol Table                                                                                   Wed Jul 28 16:21:13 2021
 
       __size_of_ADC_CONFIG 002C             ADC_CONFIG@frec 0073                          _x 0053  
                         pc 0002                         l81 0C96                         l85 0CB2  
@@ -5972,7 +5972,7 @@ Symbol Table                                                                    
                      l1730 0CA2                       l2450 0DC0                       l2434 0D97  
                      l1714 0CBF                       l2530 0659                       l2418 0E46  
                      l1706 0D3F                       l2514 062D                       l2506 05ED  
-                     l2610 03CD                       l2602 03BC                       l1740 0CE4  
+                     l2610 03D5                       l2602 03BC                       l1740 0CE4  
                      l2356 0F7A                       l2348 0F67                       l2380 0E7F  
                      l2372 0E6A                       l2364 0E5B                       l1564 0C3C  
                      l1812 07E3                       l1804 07CB                       l1820 0C4F  
@@ -5980,7 +5980,7 @@ Symbol Table                                                                    
                      l2452 0DC8                       l2436 0D9B                       l2444 0DA4  
                      l2428 0D87                       l1716 0CC3                       l2540 0686  
                      l2532 065D                       l2516 0631                       l2508 05F1  
-                     l2620 03F1                       l2612 03D6                       l2604 03BF  
+                     l2620 03F1                       l2612 03DE                       l2604 03BF  
                      l1750 0CF2                       l1742 0CE5                       l1734 0CDC  
                      l2358 0F7F                       l2390 0E9E                       l2382 0E83  
                      l2374 0E6F                       l2366 0E5F                       l1566 0C3F  
@@ -5989,8 +5989,8 @@ Symbol Table                                                                    
                      l2438 0D9F                       l2446 0DB1                       l1718 0CD2  
                      l1910 0F84                       l2550 06B1                       l2542 068B  
                      l2534 066D                       l2470 0575                       l2518 063A  
-                     l2630 048D                       l2622 0430                       l2614 03DF  
-                     l2606 03C0                       l1744 0CE6                       l1736 0CDF  
+                     l2630 048D                       l2622 0430                       l2614 03E7  
+                     l2606 03C4                       l1744 0CE6                       l1736 0CDF  
                      l1840 0C7B                       l2384 0E87                       l2376 0E75  
                      l2392 0EA4                       l2368 0E64                       l1568 0C41  
                      l1816 07EF                       l1808 07D7                       l1824 0C5D  
@@ -5999,7 +5999,7 @@ Symbol Table                                                                    
                      l2560 06E4                       l2552 06C1                       l2544 0698  
                      l2536 067D                       l2528 0654                       l2480 059F  
                      l2472 057C                       l2640 04CB                       l2632 0496  
-                     l2624 046F                       l2616 03E8                       l2608 03C5  
+                     l2624 046F                       l2616 03E8                       l2608 03CC  
                      l1746 0CEA                       l1754 0CF7                       l1738 0CE1  
                      l1842 0C80                       l2394 0EA9                       l2386 0E91  
                      l2378 0E78                       l1818 0C1F                       l1826 0C63  
