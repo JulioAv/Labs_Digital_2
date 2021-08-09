@@ -2696,7 +2696,7 @@ void I2C_Slave_Init(uint8_t address);
 # 27 "Slave_I2C.c" 2
 
 
-char z, pot;
+char z, pot, con, val;
 
 void __attribute__((picinterrupt((""))))isr(void){
     if(PIR1bits.SSPIF == 1){
@@ -2723,7 +2723,7 @@ void __attribute__((picinterrupt((""))))isr(void){
         }else if(!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
             z = SSPBUF;
             BF = 0;
-            SSPBUF = pot;
+            SSPBUF = val;
             SSPCONbits.CKP = 1;
             _delay((unsigned long)((250)*(8000000/4000000.0)));
             while(SSPSTATbits.BF);
@@ -2735,14 +2735,23 @@ void __attribute__((picinterrupt((""))))isr(void){
         pot = ADRESH;
         ADIF = 0;
     }
+    if(RBIF){
+        if(RB0==0){
+            con++;
+        }
+        if(RB1==0){
+            con--;
+        }
+        RBIF = 0;
+    }
 }
 
 void setup(){
     ANSEL = 0x01;
     ANSELH = 0x00;
 
-    TRISA = 0x01;
-    TRISB = 0x00;
+    TRISA = 0x03;
+    TRISB = 0x03;
     TRISC = 0x00;
     TRISD = 0x00;
 
@@ -2750,18 +2759,47 @@ void setup(){
     OSCCONbits.SCS = 1;
     OSCCONbits.OSTS = 0;
 
-    ADC_CONFIG(8);
-    PIE1bits.ADIE = 1;
-    INTCONbits.PEIE = 1;
-    INTCONbits.GIE = 1;
+    if(RA1==0){
+        ADC_CONFIG(8);
+        PIE1bits.ADIE = 1;
+        INTCONbits.PEIE = 1;
+        INTCONbits.GIE = 1;
 
-    I2C_Slave_Init(0x50);
+        I2C_Slave_Init(0x50);
+    }
+    else if(RA1==1){
+
+        INTCONbits.RBIE = 1;
+        IOCB = 0x03;
+        OPTION_REGbits.nRBPU = 0;
+        OPTION_REGbits.INTEDG = 1;
+        WPUB = 0x03;
+        con = 0;
+        I2C_Slave_Init(0x30);
+    }
 }
 
 void main(void) {
     setup();
     while(1){
-        ADC_IF();
-        PORTB = pot;
+
+        if(RA1==0){
+            while(1){
+                ADC_IF();
+                val = pot;
+            }
+        }
+        else if(RA1==1){
+            while(1){
+                PORTD = con;
+                val = con;
+                if(con==16){
+                    con = 0;
+                }
+                else if(con==255){
+                    con = 15;
+                }
+            }
+        }
     }
 }

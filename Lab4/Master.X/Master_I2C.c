@@ -23,8 +23,18 @@
 
 #include "I2C_2.h"
 #include <xc.h>
+#include "LCD.h"
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-char temp;
+char pot, con, cen, dec, uni, vol, buffer[];
+
+void Division(char y){
+        cen = (y/100);
+        dec = ((y%100)/10);
+        uni = ((y%100)%10);
+}
 
 void setup(){
     ANSEL = 0x00;
@@ -41,24 +51,41 @@ void setup(){
     OSCCONbits.SCS = 1;
     
     I2C_Master_Init(100000);
-    temp = 0;
+    Lcd_Init();
+    Lcd_Clear();
+    Lcd_Set_Cursor(1,1);
+    Lcd_Write_String("Pot: Con: Temp:");
 }
 
 void main(void) {
     setup();
     while(1){
-        I2C_Master_Start();
-        I2C_Master_Write(0x50);
-        I2C_Master_Write(0x00);
-        I2C_Master_Stop();
-        __delay_ms(200);
-       
+        
         I2C_Master_Start();
         I2C_Master_Write(0x51);
-        PORTB = I2C_Master_Read(0);
+        pot = I2C_Master_Read(0);
         I2C_Master_Stop();
         __delay_ms(200);  
-        temp++;
+        
+        I2C_Master_Start();
+        I2C_Master_Write(0x31);
+        con = I2C_Master_Read(0);
+        I2C_Master_Stop();
+        __delay_ms(200);
+        
+        vol = pot*0.01961;
+        
+        Division(con);
+        Lcd_Set_Cursor(2,1);
+        sprintf(buffer, " %dV ", vol);
+        Lcd_Write_String(buffer);
+        //sprintf(buffer, "  %d", cen);
+        //Lcd_Write_String(buffer);
+        sprintf(buffer, "  %d", dec);
+        Lcd_Write_String(buffer);
+        sprintf(buffer, "%d", uni);
+        Lcd_Write_String(buffer);
+        
     }
     return;
 }
