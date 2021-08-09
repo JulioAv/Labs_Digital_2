@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.31\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\Master.X.production.sym \
   --cmf=dist/default/production\Master.X.production.cmf -z -Q16F887 \
-  -oC:\Users\swimm\AppData\Local\Temp\sihg.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\swimm\AppData\Local\Temp\s2fs.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Master.X.production.map -E1 -ver=XC8 Compiler \
   --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK -ACODE=00h-07FFhx4 \
   -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 \
@@ -18,7 +18,7 @@ Linker command line:
   -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 \
   -preset_vec=00h,intentry,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=ENTRY -k C:\Users\swimm\AppData\Local\Temp\sihg.o \
+  -pfunctab=ENTRY -k C:\Users\swimm\AppData\Local\Temp\s2fs.o \
   dist/default/production\Master.X.production.o 
 
 Object code version is 3.11
@@ -28,21 +28,21 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\swimm\AppData\Local\Temp\sihg.o
+C:\Users\swimm\AppData\Local\Temp\s2fs.o
                 end_init                              0        0        3        0       0
                 config                             2007     2007        2        0       4
 dist/default/production\Master.X.production.o
                 cinit                               7F9      7F9        7      FF2       0
                 config                             2007     2007        2        0       4
-                text8                               687      687        D      D0E       0
-                text7                               6BA      6BA       2E      D74       0
-                text6                               66B      66B        9      CD6       0
-                text5                               674      674        9      CE8       0
-                text4                               67D      67D        A      CFA       0
-                text3                               720      720       66      E40       0
-                text2                               6E8      6E8       38      DD0       0
-                text1                               694      694       26      D28       0
-                maintext                            786      786       73      F0C       0
+                text8                               693      693        D      D26       0
+                text7                               6C6      6C6       2E      D8C       0
+                text6                               677      677        9      CEE       0
+                text5                               680      680        9      D00       0
+                text4                               689      689        A      D12       0
+                text3                               72C      72C       66      E58       0
+                text2                               6F4      6F4       38      DE8       0
+                text1                               6A0      6A0       26      D40       0
+                maintext                            792      792       67      F24       0
                 cstackBANK0                          20       20        B       20       1
                 cstackCOMMON                         70       70        E       70       1
                 bssBANK0                             2B       2B        1       20       1
@@ -53,15 +53,15 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   CODE           
                 end_init                              0        0        3         0
                 cinit                               7F9      7F9        7         0
-                text8                               687      687        D         0
-                text7                               6BA      6BA       2E         0
-                text6                               66B      66B        9         0
-                text5                               674      674        9         0
-                text4                               67D      67D        A         0
-                text3                               720      720       66         0
-                text2                               6E8      6E8       38         0
-                text1                               694      694       26         0
-                maintext                            786      786       73         0
+                text8                               693      693        D         0
+                text7                               6C6      6C6       2E         0
+                text6                               677      677        9         0
+                text5                               680      680        9         0
+                text4                               689      689        A         0
+                text3                               72C      72C       66         0
+                text2                               6F4      6F4       38         0
+                text1                               6A0      6A0       26         0
+                maintext                            792      792       67         0
 
         CLASS   STRCODE        
 
@@ -111,15 +111,15 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 reset_vec                      000000  000003  000003         0       0  CODE        2
                 cstackBANK0                    000020  00000C  00002C        20       1  BANK0       1
                 cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
-                text6                          00066B  000009  000674       CD6       0  CODE        2
-                text5                          000674  000009  00067D       CE8       0  CODE        2
-                text4                          00067D  00000A  000687       CFA       0  CODE        2
-                text8                          000687  00000D  000694       D0E       0  CODE        2
-                text1                          000694  000026  0006BA       D28       0  CODE        2
-                text7                          0006BA  00002E  0006E8       D74       0  CODE        2
-                text2                          0006E8  000038  000720       DD0       0  CODE        2
-                text3                          000720  000066  000786       E40       0  CODE        2
-                maintext                       000786  000073  0007F9       F0C       0  CODE        2
+                text6                          000677  000009  000680       CEE       0  CODE        2
+                text5                          000680  000009  000689       D00       0  CODE        2
+                text4                          000689  00000A  000693       D12       0  CODE        2
+                text8                          000693  00000D  0006A0       D26       0  CODE        2
+                text1                          0006A0  000026  0006C6       D40       0  CODE        2
+                text7                          0006C6  00002E  0006F4       D8C       0  CODE        2
+                text2                          0006F4  000038  00072C       DE8       0  CODE        2
+                text3                          00072C  000066  000792       E58       0  CODE        2
+                maintext                       000792  000067  0007F9       F24       0  CODE        2
                 cinit                          0007F9  000007  000800       FF2       0  CODE        2
 
 
@@ -130,12 +130,12 @@ UNUSED ADDRESS RANGES
         BANK1            00A0-00EF             50           1
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
-        CODE             0003-066A            668           2
+        CODE             0003-0676            674           2
                          0800-1FFF            800
-        CONST            0003-066A            100           2
+        CONST            0003-0676            100           2
                          0800-1FFF            100
         EEDATA           2100-21FF            100           2
-        ENTRY            0003-066A            100           2
+        ENTRY            0003-0676            100           2
                          0800-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              002C-006F             44           1
@@ -147,9 +147,9 @@ UNUSED ADDRESS RANGES
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
         STACK            0110-016F             60           1
-        STRCODE          0003-066A            668           2
+        STRCODE          0003-0676            674           2
                          0800-1FFF           1800
-        STRING           0003-066A            100           2
+        STRING           0003-0676            100           2
                          0800-1FFF            100
 
                                   Symbol Table
@@ -163,16 +163,15 @@ I2C_Master_Write@d         cstackCOMMON 0070
 _ANSEL                     (abs)        0188
 _ANSELH                    (abs)        0189
 _GIE                       (abs)        005F
-_I2C_Master_Init           text2        06E8
-_I2C_Master_Read           text7        06BA
-_I2C_Master_Start          text6        066B
-_I2C_Master_Stop           text5        0674
-_I2C_Master_Wait           text8        0687
-_I2C_Master_Write          text4        067D
+_I2C_Master_Init           text2        06F4
+_I2C_Master_Read           text7        06C6
+_I2C_Master_Start          text6        0677
+_I2C_Master_Stop           text5        0680
+_I2C_Master_Wait           text8        0693
+_I2C_Master_Write          text4        0689
 _OSCCONbits                (abs)        008F
 _PEIE                      (abs)        005E
 _PORTB                     (abs)        0006
-_PORTC                     (abs)        0007
 _SSPADD                    (abs)        0093
 _SSPBUF                    (abs)        0013
 _SSPCON                    (abs)        0014
@@ -262,7 +261,7 @@ __S2                       (abs)        0000
 __S3                       (abs)        0000
 ___int_sp                  stack        0000
 ___latbits                 (abs)        0002
-___lldiv                   text3        0720
+___lldiv                   text3        072C
 ___lldiv@counter           cstackCOMMON 007D
 ___lldiv@dividend          cstackCOMMON 0074
 ___lldiv@divisor           cstackCOMMON 0070
@@ -270,29 +269,29 @@ ___lldiv@quotient          cstackCOMMON 0079
 ___sp                      stack        0000
 ___stackhi                 (abs)        0000
 ___stacklo                 (abs)        0000
-__end_of_I2C_Master_Init   text2        0720
-__end_of_I2C_Master_Read   text7        06E8
-__end_of_I2C_Master_Start  text6        0674
-__end_of_I2C_Master_Stop   text5        067D
-__end_of_I2C_Master_Wait   text8        0694
-__end_of_I2C_Master_Write  text4        0687
-__end_of___lldiv           text3        0786
+__end_of_I2C_Master_Init   text2        072C
+__end_of_I2C_Master_Read   text7        06F4
+__end_of_I2C_Master_Start  text6        0680
+__end_of_I2C_Master_Stop   text5        0689
+__end_of_I2C_Master_Wait   text8        06A0
+__end_of_I2C_Master_Write  text4        0693
+__end_of___lldiv           text3        0792
 __end_of__initialization   cinit        07FC
 __end_of_main              maintext     07F9
-__end_of_setup             text1        06BA
+__end_of_setup             text1        06C6
 __initialization           cinit        07F9
 __pbssBANK0                bssBANK0     002B
 __pcstackBANK0             cstackBANK0  0020
 __pcstackCOMMON            cstackCOMMON 0070
-__pmaintext                maintext     0786
-__ptext1                   text1        0694
-__ptext2                   text2        06E8
-__ptext3                   text3        0720
-__ptext4                   text4        067D
-__ptext5                   text5        0674
-__ptext6                   text6        066B
-__ptext7                   text7        06BA
-__ptext8                   text8        0687
+__pmaintext                maintext     0792
+__ptext1                   text1        06A0
+__ptext2                   text2        06F4
+__ptext3                   text3        072C
+__ptext4                   text4        0689
+__ptext5                   text5        0680
+__ptext6                   text6        0677
+__ptext7                   text7        06C6
+__ptext8                   text8        0693
 __size_of_I2C_Master_Init  (abs)        0000
 __size_of_I2C_Master_Read  (abs)        0000
 __size_of_I2C_Master_Start (abs)        0000
@@ -302,8 +301,8 @@ __size_of_I2C_Master_Write (abs)        0000
 __size_of___lldiv          (abs)        0000
 __size_of_main             (abs)        0000
 __size_of_setup            (abs)        0000
-_main                      maintext     0786
-_setup                     text1        0694
+_main                      maintext     0792
+_setup                     text1        06A0
 _temp                      bssBANK0     002B
 btemp                      (abs)        007E
 end_of_initialization      cinit        07FC
@@ -603,17 +602,17 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c
-		___lldiv       		CODE           	0720	0000	102
+		___lldiv       		CODE           	072C	0000	102
 
 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\__lldiv.c estimated size: 102
 
 I2C_2.c
-		_I2C_Master_Read		CODE           	06BA	0000	46
-		_I2C_Master_Wait		CODE           	0687	0000	13
-		_I2C_Master_Init		CODE           	06E8	0000	56
-		_I2C_Master_Stop		CODE           	0674	0000	9
-		_I2C_Master_Write		CODE           	067D	0000	10
-		_I2C_Master_Start		CODE           	066B	0000	9
+		_I2C_Master_Read		CODE           	06C6	0000	46
+		_I2C_Master_Wait		CODE           	0693	0000	13
+		_I2C_Master_Init		CODE           	06F4	0000	56
+		_I2C_Master_Stop		CODE           	0680	0000	9
+		_I2C_Master_Write		CODE           	0689	0000	10
+		_I2C_Master_Start		CODE           	0677	0000	9
 
 I2C_2.c estimated size: 143
 
@@ -623,8 +622,8 @@ shared
 shared estimated size: 3
 
 Master_I2C.c
-		_main          		CODE           	0786	0000	115
-		_setup         		CODE           	0694	0000	38
+		_main          		CODE           	0792	0000	103
+		_setup         		CODE           	06A0	0000	38
 
-Master_I2C.c estimated size: 153
+Master_I2C.c estimated size: 141
 

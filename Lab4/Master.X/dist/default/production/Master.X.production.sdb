@@ -31,8 +31,6 @@
 [v _main main `(v  1 e 1 0 ]
 "228 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-"290
-[v _PORTC PORTC `VEuc  1 e 1 @7 ]
 "843
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
@@ -43,7 +41,7 @@
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1540
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
-[s S102 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S101 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -53,8 +51,8 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1557
-[u S111 . 1 `S102 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES111  1 e 1 @135 ]
+[u S110 . 1 `S101 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES110  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 [s S29 . 1 `uc 1 SCS 1 0 :1:0 
@@ -73,7 +71,7 @@
 [v _OSCCONbits OSCCONbits `VES40  1 e 1 @143 ]
 "1979
 [v _SSPCON2 SSPCON2 `VEuc  1 e 1 @145 ]
-[s S123 . 1 `uc 1 SEN 1 0 :1:0 
+[s S122 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -83,8 +81,8 @@
 `uc 1 GCEN 1 0 :1:7 
 ]
 "1996
-[u S132 . 1 `S123 1 . 1 0 ]
-[v _SSPCON2bits SSPCON2bits `VES132  1 e 1 @145 ]
+[u S131 . 1 `S122 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES131  1 e 1 @145 ]
 "2048
 [v _SSPADD SSPADD `VEuc  1 e 1 @147 ]
 "2177
@@ -110,7 +108,7 @@
 "47
 [v _main main `(v  1 e 1 0 ]
 {
-"65
+"64
 } 0
 "29
 [v _setup setup `(v  1 e 1 0 ]

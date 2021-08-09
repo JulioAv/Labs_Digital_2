@@ -52,9 +52,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "92 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
 [v __delay `JF1256 ~T0 @X0 0 e ]
 [p i __delay ]
-"290 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 290: extern volatile unsigned char PORTC __attribute__((address(0x007)));
-[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
 "60 ./I2C_2.h
 [; ;./I2C_2.h: 60: unsigned short I2C_Master_Read(unsigned short a);
 [v _I2C_Master_Read `(us ~T0 @X0 0 ef1`us ]
@@ -383,8 +380,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Master_I2C.c: 50:         I2C_Master_Start();
 [e ( _I2C_Master_Start ..  ]
 "51
-[; ;Master_I2C.c: 51:         I2C_Master_Write(0x90);
-[e ( _I2C_Master_Write (1 -> -> 144 `i `ui ]
+[; ;Master_I2C.c: 51:         I2C_Master_Write(0x50);
+[e ( _I2C_Master_Write (1 -> -> 80 `i `ui ]
 "52
 [; ;Master_I2C.c: 52:         I2C_Master_Write(0x00);
 [e ( _I2C_Master_Write (1 -> -> 0 `i `ui ]
@@ -398,33 +395,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Master_I2C.c: 56:         I2C_Master_Start();
 [e ( _I2C_Master_Start ..  ]
 "57
-[; ;Master_I2C.c: 57:         I2C_Master_Write(0x91);
-[e ( _I2C_Master_Write (1 -> -> 145 `i `ui ]
+[; ;Master_I2C.c: 57:         I2C_Master_Write(0x51);
+[e ( _I2C_Master_Write (1 -> -> 81 `i `ui ]
 "58
-[; ;Master_I2C.c: 58:         PORTC = I2C_Master_Read(0);
-[e = _PORTC -> ( _I2C_Master_Read (1 -> -> 0 `i `us `uc ]
-"59
-[; ;Master_I2C.c: 59:         PORTB = I2C_Master_Read(0);
+[; ;Master_I2C.c: 58:         PORTB = I2C_Master_Read(0);
 [e = _PORTB -> ( _I2C_Master_Read (1 -> -> 0 `i `us `uc ]
-"60
-[; ;Master_I2C.c: 60:         I2C_Master_Stop();
+"59
+[; ;Master_I2C.c: 59:         I2C_Master_Stop();
 [e ( _I2C_Master_Stop ..  ]
-"61
-[; ;Master_I2C.c: 61:         _delay((unsigned long)((200)*(8000000/4000.0)));
+"60
+[; ;Master_I2C.c: 60:         _delay((unsigned long)((200)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"62
-[; ;Master_I2C.c: 62:         temp++;
+"61
+[; ;Master_I2C.c: 61:         temp++;
 [e ++ _temp -> -> 1 `i `uc ]
-"63
-[; ;Master_I2C.c: 63:     }
+"62
+[; ;Master_I2C.c: 62:     }
 }
 [e :U 140 ]
 [e $U 141  ]
 [e :U 142 ]
-"64
-[; ;Master_I2C.c: 64:     return;
+"63
+[; ;Master_I2C.c: 63:     return;
 [e $UE 139  ]
-"65
-[; ;Master_I2C.c: 65: }
+"64
+[; ;Master_I2C.c: 64: }
 [e :UE 139 ]
 }
