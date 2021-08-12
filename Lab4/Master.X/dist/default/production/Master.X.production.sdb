@@ -21,6 +21,8 @@
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
@@ -53,11 +55,11 @@
 [v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
 "72
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
-"33 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab4\Master.X\Master_I2C.c
+"34 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab4\Master.X\Master_I2C.c
 [v _Division Division `(v  1 e 1 0 ]
-"39
+"40
 [v _setup setup `(v  1 e 1 0 ]
-"60
+"61
 [v _main main `(v  1 e 1 0 ]
 "228 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
@@ -73,7 +75,7 @@
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1540
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
-[s S139 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S145 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -83,8 +85,8 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1557
-[u S148 . 1 `S139 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES148  1 e 1 @135 ]
+[u S154 . 1 `S145 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES154  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 [s S29 . 1 `uc 1 SCS 1 0 :1:0 
@@ -103,7 +105,7 @@
 [v _OSCCONbits OSCCONbits `VES40  1 e 1 @143 ]
 "1979
 [v _SSPCON2 SSPCON2 `VEuc  1 e 1 @145 ]
-[s S160 . 1 `uc 1 SEN 1 0 :1:0 
+[s S166 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -113,8 +115,8 @@
 `uc 1 GCEN 1 0 :1:7 
 ]
 "1996
-[u S169 . 1 `S160 1 . 1 0 ]
-[v _SSPCON2bits SSPCON2bits `VES169  1 e 1 @145 ]
+[u S175 . 1 `S166 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES175  1 e 1 @145 ]
 "2048
 [v _SSPADD SSPADD `VEuc  1 e 1 @147 ]
 "2177
@@ -149,10 +151,14 @@
 [v _uni uni `uc  1 e 1 0 ]
 [v _vol vol `uc  1 e 1 0 ]
 [v _buffer buffer `[1]uc  1 e 1 0 ]
-"60
+[v _tem1 tem1 `uc  1 e 1 0 ]
+[v _tem2 tem2 `uc  1 e 1 0 ]
+"32
+[v _temp temp `i  1 e 2 0 ]
+"61
 [v _main main `(v  1 e 1 0 ]
 {
-"91
+"120
 } 0
 "505 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
@@ -197,10 +203,10 @@
 [v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
 "30
 } 0
-"39 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab4\Master.X\Master_I2C.c
+"40 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab4\Master.X\Master_I2C.c
 [v _setup setup `(v  1 e 1 0 ]
 {
-"58
+"59
 } 0
 "72 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab4\Master.X\LCD.c
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
@@ -280,6 +286,16 @@
 [v ___xxtofl@sign sign `uc  1 a 1 8 ]
 "44
 } 0
+"15 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
 "43 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
 {
@@ -293,17 +309,17 @@
 "8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S559 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S565 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S564 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S567 . 4 `l 1 i 4 0 `d 1 f 4 0 `S559 1 fAsBytes 4 0 `S564 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S567  1 a 4 20 ]
+[s S570 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S573 . 4 `l 1 i 4 0 `d 1 f 4 0 `S565 1 fAsBytes 4 0 `S570 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S573  1 a 4 20 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 14 ]
-[s S636 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S642 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S639 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S636 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S639  1 a 2 24 ]
+[u S645 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S642 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S645  1 a 2 24 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 19 ]
 "11
@@ -359,13 +375,13 @@
 {
 "35
 } 0
-"33 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab4\Master.X\Master_I2C.c
+"34 C:\Users\swimm\Documents\U\6. Semestre\Digital\Labs_Digital_2\Lab4\Master.X\Master_I2C.c
 [v _Division Division `(v  1 e 1 0 ]
 {
 [v Division@y y `uc  1 a 1 wreg ]
 [v Division@y y `uc  1 a 1 wreg ]
 [v Division@y y `uc  1 a 1 9 ]
-"37
+"38
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]

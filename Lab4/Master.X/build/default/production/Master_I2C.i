@@ -2901,7 +2901,8 @@ extern char * ftoa(float f, int * status);
 # 29 "Master_I2C.c" 2
 
 
-char pot, con, cen, dec, uni, vol, buffer[];
+char pot, con, cen, dec, uni, vol, buffer[], tem1, tem2;
+int temp;
 
 void Division(char y){
         cen = (y/100);
@@ -2940,21 +2941,49 @@ void main(void) {
         I2C_Master_Stop();
         _delay((unsigned long)((200)*(8000000/4000.0)));
 
+        vol = pot*0.01961;
+        Lcd_Set_Cursor(2,1);
+        sprintf(buffer, " %dV ", vol);
+        Lcd_Write_String(buffer);
+
         I2C_Master_Start();
         I2C_Master_Write(0x31);
         con = I2C_Master_Read(0);
         I2C_Master_Stop();
         _delay((unsigned long)((200)*(8000000/4000.0)));
 
-        vol = pot*0.01961;
-
         Division(con);
-        Lcd_Set_Cursor(2,1);
-        sprintf(buffer, " %dV ", vol);
+        sprintf(buffer, "  %d", dec);
+        Lcd_Write_String(buffer);
+        sprintf(buffer, "%d", uni);
         Lcd_Write_String(buffer);
 
+        I2C_Master_Start();
+        I2C_Master_Write(0x90);
+        I2C_Master_Write(0xEE);
+        I2C_Master_Stop();
+        _delay((unsigned long)((200)*(8000000/4000.0)));
 
-        sprintf(buffer, "  %d", dec);
+        I2C_Master_Start();
+        I2C_Master_Write(0x90);
+        I2C_Master_Write(0xAA);
+        I2C_Master_Stop();
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+
+        I2C_Master_Start();
+        I2C_Master_Write(0x91);
+        tem1 = I2C_Master_Read(0);
+        tem2 = I2C_Master_Read(0);
+        I2C_Master_Stop();
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+
+        temp = tem1+tem2;
+        temp = (temp*125)/(31488);
+
+        Division(tem1);
+        sprintf(buffer, "   %d", cen);
+        Lcd_Write_String(buffer);
+        sprintf(buffer, "%d", dec);
         Lcd_Write_String(buffer);
         sprintf(buffer, "%d", uni);
         Lcd_Write_String(buffer);
