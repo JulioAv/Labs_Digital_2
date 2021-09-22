@@ -7,12 +7,14 @@ void setup() {
   pinMode(GREEN_LED, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(PUSH1), J1, CHANGE);    //Los push se configuran como interrupciones que llevan a las rutinas indicadas
   attachInterrupt(digitalPinToInterrupt(PUSH2), J2, CHANGE);
+  Serial.begin(9600);
   
 }
 char mode = 0;
 char con1 = 0;
 char con2 = 0;
 char sas;
+char buffer[10];
 
 void loop() {
   // put your main code here, to run repeatedly: 
@@ -23,6 +25,7 @@ void loop() {
   }
   
   if(mode == 1){                              //En el modo 1 se realiza la secuencia del semáforo
+    Serial.write("\r\n");
     digitalWrite(RED_LED, HIGH);
     delay(1000);
     digitalWrite(RED_LED, LOW);
@@ -42,6 +45,10 @@ void loop() {
     digitalWrite(RED_LED, LOW);
     digitalWrite(BLUE_LED, LOW);
     sas = 0;
+    sprintf(buffer, "%d ", con1);
+    Serial.write(buffer);
+    sprintf(buffer, "%d ", con2);
+    Serial.write(buffer);
   }
   while(con1 >= 8){                           //cuando alguno de los jugadores llegue a 9, se pone en verde o azul y termina el juego
     digitalWrite(GREEN_LED, HIGH);
